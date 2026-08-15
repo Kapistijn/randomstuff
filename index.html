@@ -1,34 +1,1442 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G923 voor BeamNG.drive</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logitech G923 voor BeamNG.drive</title>
 <style>
-:root{--bg:#101316;--surface:#181d21;--surface2:#222b30;--ink:#f2f3ee;--muted:#aeb7b8;--line:#344047;--mint:#8bd6c2;--gold:#efb87d;--red:#ef8f8f;--r:22px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}h1,h2,h3{line-height:1.08;text-wrap:balance;margin:0}h1{font-size:clamp(2.8rem,7vw,6.5rem);letter-spacing:-.055em}h2{font-size:clamp(2rem,4vw,3.6rem);letter-spacing:-.04em}h3{font-size:1.3rem}p{max-width:70ch;color:var(--muted);text-wrap:pretty}button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:800;color:var(--mint)}.top{position:sticky;top:0;z-index:5;background:#101316f2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}nav{min-height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800}.brand span{color:var(--mint)}nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:.9rem}.hero{padding:clamp(70px,12vw,150px) 0 90px;background:radial-gradient(circle at 82% 18%,#274343 0,transparent 34%),linear-gradient(145deg,#131719,#101316 65%)}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}.hero p{margin:28px 0}.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 13px;color:var(--muted);font-size:.85rem}.hero-art{min-height:320px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);position:relative;overflow:hidden}.hero-art:before{content:"";position:absolute;inset:22% 12% 15%;border:12px solid #3d494e;border-radius:50%;transform:rotate(-13deg);box-shadow:inset 0 0 0 8px #171b1e}.hero-art:after{content:"900°";position:absolute;right:28px;top:24px;color:var(--mint);font-weight:800}.hub{position:absolute;inset:35% 37%;background:#293338;border:9px solid #56646a;border-radius:18px}.bar{position:absolute;height:16px;width:64%;background:#56646a;left:18%;top:45%;border-radius:20px;transform:rotate(-13deg)}.section{padding:100px 0}.section.alt{background:#151a1d}.section-head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:42px}.section-head p{margin:0}.grid{display:grid;gap:16px}.two{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:repeat(3,1fr)}.card,.compare,.callout,.drive-demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px}.card{min-height:190px}.card b{display:block;font-size:2rem;color:var(--mint);margin-bottom:16px}.compare{display:grid;gap:16px}.compare h3{display:flex;justify-content:space-between}.compare.keyboard{border-color:#5d5350}.compare.wheel{border-color:#4e7d74}.meter{height:12px;border-radius:999px;background:#30393d;overflow:hidden}.meter i{display:block;height:100%;width:20%;background:var(--mint);border-radius:inherit}.keyboard .meter i{width:100%;background:var(--gold)}.sequence{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.9rem;color:var(--muted)}
-.drive-demo{display:grid;grid-template-columns:1.25fr .75fr;gap:28px}.sim{position:relative;min-height:460px;border-radius:18px;overflow:hidden;background:#1d302e}.sim canvas{display:block;width:100%;height:100%;min-height:460px}.sim-label{position:absolute;left:16px;top:16px;background:#111719dd;border:1px solid #526064;border-radius:999px;padding:7px 12px;color:#dce5e0;font-size:.82rem}.sim-help{position:absolute;left:16px;bottom:16px;color:#e3ebe5;background:#111719cc;border-radius:12px;padding:8px 11px;font-size:.82rem}.telemetry{display:grid;gap:14px}.telemetry-card{padding:18px;border:1px solid var(--line);border-radius:16px;background:#14191c}.telemetry-card strong{display:flex;justify-content:space-between}.telemetry-card input{width:100%;accent-color:var(--mint);margin-top:12px}.bar-meter{height:10px;background:#30393d;border-radius:99px;overflow:hidden;margin-top:12px}.bar-meter i{display:block;width:0;height:100%;background:var(--mint);transition:width .08s}.bar-meter.steer i{background:var(--gold)}.bar-meter.brake i{background:var(--red)}.drive-buttons{display:flex;gap:8px;flex-wrap:wrap}.drive-buttons button,.small-btn,.game button{min-height:44px;border:1px solid var(--line);background:var(--surface2);border-radius:999px;padding:10px 14px}.drive-buttons button.active,.game button.active{background:var(--mint);color:#10211e;border-color:var(--mint);font-weight:800}.drive-note{min-height:54px;color:var(--muted)}.feedback{padding:16px;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;gap:12px}.feedback-dot{width:16px;height:16px;border-radius:50%;background:var(--line);flex:none}.feedback.on{animation:vibrate .08s infinite alternate}.feedback.on .feedback-dot{background:var(--gold);box-shadow:0 0 0 9px #efb87d22}@keyframes vibrate{to{transform:translateX(4px) rotate(.5deg)}}.pedal{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border-top:1px solid var(--line);padding:20px 0}.pedal-icon{font-size:2rem}.flip{display:flex;justify-content:center;align-items:center;gap:18px;font-size:2.5rem;font-weight:850}.flip span{padding:12px 22px;border:1px solid var(--line);border-radius:14px;background:#273034;color:var(--mint)}.range-wrap{padding:26px 0}.range-wrap input{width:100%;accent-color:var(--mint)}.degrees{font-size:3rem;color:var(--mint);font-variant-numeric:tabular-nums}.beam-card{padding:24px;border:1px solid var(--line);border-radius:18px;background:#191f22}.beam-card b{font-size:1.2rem}.table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}.table th,.table td{text-align:left;padding:17px;border-bottom:1px solid var(--line);vertical-align:top}.table th{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}.good{color:var(--mint)}.game{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.answer{min-height:64px;font-size:1.25rem}.price{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:34px;border-radius:var(--r);background:var(--mint);color:#12221f}.price p{color:#26483f}.price strong{font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:-.06em}.ending{padding:120px 0;background:#1d2828}.ending p{font-size:1.2rem}.footer{padding:30px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}@media(max-width:780px){.wrap{width:min(100% - 28px,620px)}nav a{display:none}.hero-grid,.drive-demo,.two,.three{grid-template-columns:1fr}.hero{padding-top:70px}.hero-art{min-height:240px}.section{padding:70px 0}.section-head{display:block}.section-head p{margin-top:14px}.table{font-size:.9rem}.table th,.table td{padding:12px 9px}.price{grid-template-columns:1fr}.flip{font-size:1.7rem}.sim,.sim canvas{min-height:350px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+:root {
+  --bg: #0d1114;
+  --surface: #141a1f;
+  --surface-elevated: #1a2229;
+  --surface-active: #222d36;
+  --ink: #f4f6f8;
+  --muted: #9ba8b0;
+  --line: #26333c;
+  --line-strong: #374754;
+  --cyan: #5ce1e6;
+  --amber: #f5b041;
+  --red: #f25f5c;
+  --green: #48cfad;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { line-height: 1.15; text-wrap: balance; margin: 0; color: #fff; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); letter-spacing: -0.04em; font-weight: 850; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -0.03em; font-weight: 800; }
+h3 { font-size: 1.25rem; font-weight: 750; }
+p { max-width: 68ch; color: var(--muted); margin: 0; text-wrap: pretty; }
+
+button, input { font: inherit; }
+button { cursor: pointer; color: inherit; border: none; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+
+.wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+
+/* Sticky Header */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 17, 20, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.logo {
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  font-size: 1.1rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.logo-tag {
+  background: var(--surface-active);
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav-links { display: flex; gap: 24px; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.nav-links a:hover { color: #fff; }
+
+/* Hero Section */
+.hero {
+  padding: clamp(60px, 10vw, 120px) 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 20%, rgba(92, 225, 230, 0.12) 0%, transparent 45%),
+              linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+}
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.hero-p {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.55;
+  margin: 24px 0 32px;
+}
+.hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--cyan);
+  color: #051417;
+  font-weight: 750;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.btn-secondary {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  color: #fff;
+  font-weight: 650;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: var(--surface-active); }
+
+/* SVG Wheel Art */
+.wheel-hero-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.hero-wheel-svg {
+  width: min(240px, 80%);
+  height: auto;
+  filter: drop-shadow(0 14px 24px rgba(0,0,0,0.5));
+}
+.wheel-hero-card .wheel-spec-badge {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Sections Common */
+.section { padding: 90px 0; border-top: 1px solid var(--line); }
+.section.bg-alt { background-color: var(--surface); }
+.sec-header {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sec-tag {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+}
+
+/* Cards Grid */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+.spec-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.spec-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.spec-num {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--cyan);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* Compare Grid */
+.compare-box {
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.compare-box.bad {
+  background: #191617;
+  border: 1px solid #3d2629;
+}
+.compare-box.good {
+  background: #112022;
+  border: 1px solid #1f4245;
+}
+.compare-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.compare-pill {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+.compare-box.bad .compare-pill { background: #3d1f23; color: var(--red); }
+.compare-box.good .compare-pill { background: #133a3d; color: var(--cyan); }
+.vis-bar-wrap {
+  background: rgba(0,0,0,0.4);
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+.vis-label { display: flex; justify-content: space-between; font-size: 0.85rem; }
+.vis-track {
+  height: 12px;
+  background: #252b30;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.vis-fill { height: 100%; border-radius: inherit; }
+.bad .vis-fill { background: var(--red); width: 100%; }
+.good .vis-fill { background: var(--cyan); width: 45%; }
+
+/* --- 3D / DRIVING SIMULATOR STYLING --- */
+.sim-container {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 24px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.canvas-wrapper {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #090c0e;
+  border: 1px solid var(--line);
+  min-height: 480px;
+  display: flex;
+}
+#raceCanvas {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  display: block;
+}
+.canvas-overlay-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.hud-chip {
+  background: rgba(13, 17, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hud-chip span { color: var(--cyan); font-variant-numeric: tabular-nums; }
+.canvas-help-bot {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(13, 17, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* Cockpit / Controls panel */
+.sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: space-between;
+}
+.mode-switch {
+  display: flex;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+.mode-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 750;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: var(--muted);
+}
+.mode-btn.active {
+  background: var(--cyan);
+  color: #051417;
+}
+
+.cockpit-widget {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.widget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.widget-val {
+  font-family: ui-monospace, monospace;
+  color: var(--cyan);
+}
+.pedal-range {
+  width: 100%;
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+.pedal-bar {
+  height: 8px;
+  background: #252e35;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.pedal-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.05s linear;
+}
+.fill-throttle { background: var(--green); }
+.fill-brake { background: var(--red); }
+.fill-steer { background: var(--amber); }
+
+/* Force Feedback trigger */
+.ffb-trigger-btn {
+  background: var(--surface-active);
+  border: 1px solid var(--line);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 750;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.15s ease;
+}
+.ffb-trigger-btn:hover { background: var(--line-strong); }
+.ffb-status-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.25);
+}
+.ffb-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #394752;
+  flex-shrink: 0;
+}
+.ffb-active .ffb-led {
+  background: var(--amber);
+  box-shadow: 0 0 10px var(--amber);
+}
+.sim-shaking {
+  animation: ffbVibrate 0.08s infinite alternate ease-in-out;
+}
+@keyframes ffbVibrate {
+  0% { transform: translate(-2px, 1px) rotate(-0.3deg); }
+  100% { transform: translate(2px, -1px) rotate(0.3deg); }
+}
+
+/* 900 Degrees Interactive Section */
+.rotation-widget {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.wheel-interactive-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#interactiveWheelSvg {
+  width: 220px;
+  height: 220px;
+  transform-origin: center;
+  transition: transform 0.05s linear;
+}
+.deg-slider-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.deg-big-num {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--cyan);
+  font-family: ui-monospace, monospace;
+}
+
+/* BeamNG Grid */
+.beam-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.beam-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.beam-icon { font-size: 1.8rem; }
+
+/* Direct Drive Table */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-elevated);
+}
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.spec-table th, .spec-table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.spec-table th {
+  background: rgba(0,0,0,0.2);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.spec-table tr:last-child td { border-bottom: none; }
+.highlight-cyan { color: var(--cyan); font-weight: 750; }
+
+/* Game selector */
+.game-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.game-chip {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.15s ease;
+}
+.game-chip:hover { border-color: var(--line-strong); }
+.game-chip.active {
+  background: var(--cyan);
+  color: #051417;
+  border-color: var(--cyan);
+}
+.game-result-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* Price Box */
+.price-card {
+  background: linear-gradient(135deg, #133a3d 0%, #0d2224 100%);
+  border: 1px solid #1f575c;
+  border-radius: var(--radius);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+.price-tag-big {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+/* Conclusion Footer */
+.conclusion {
+  padding: 100px 0;
+  background: #0b0f12;
+  border-top: 1px solid var(--line);
+}
+.bday-card {
+  margin-top: 32px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+.bday-icon {
+  font-size: 2.5rem;
+  background: var(--surface-active);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+@media (max-width: 900px) {
+  .hero-layout, .grid-3, .grid-2, .sim-container, .rotation-widget, .beam-grid, .price-card {
+    grid-template-columns: 1fr;
+  }
+  .nav-links { display: none; }
+  .canvas-wrapper, #raceCanvas { min-height: 380px; }
+}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><nav><div class="brand">G923 <span>/</span> BeamNG</div><div><a href="#vergelijking">Vergelijking</a><a href="#demo">Rijd-demo</a><a href="#uitleg">Uitleg</a></div></nav></div></header>
+
+<!-- Header -->
+<header class="top-nav">
+  <div class="wrap nav-inner">
+    <div class="logo">
+      Logitech G923 <span class="logo-tag">BeamNG Edition</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#verschil">Toetsenbord vs Stuur</a>
+      <a href="#simulator">Rijsimulator</a>
+      <a href="#feedback">Force Feedback</a>
+      <a href="#beamng">BeamNG Voordelen</a>
+      <a href="#directdrive">Vergelijking</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<section class="hero"><div class="wrap hero-grid"><div><span class="pill">Een rustige uitleg voor thuis</span><div style="height:22px"></div><h1>Waarom een echt stuur beter past bij BeamNG.</h1><p class="lede">Een toetsenbord zegt vooral <strong>aan of uit</strong>. Een racestuur laat je rustig sturen, gas geven, remmen en voelen wat de auto doet. De Logitech G923 is geen professioneel wondermiddel, maar wel een logische eerste stap.</p><a class="pill" href="#vergelijking">Bekijk het verschil ↓</a></div><div class="hero-art" aria-label="Illustratie van een stuur"><div class="bar"></div><div class="hub"></div></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">In één minuut</span><h2>Wat krijg je eigenlijk?</h2></div><p>De G923 is gemaakt voor mensen die van toetsenbord of controller naar een fysiek stuur willen.</p></div><div class="grid three"><article class="card"><b>900°</b><h3>Veel ruimte om te sturen</h3><p>Ongeveer 2,5 draai van volledig links naar volledig rechts. Dat voelt natuurlijker bij rijden en parkeren.</p></article><article class="card"><b>3</b><h3>Pedalen</h3><p>Gas, rem en koppeling. Je kunt ze harder of zachter indrukken, in plaats van alleen aan of uit.</p></article><article class="card"><b>2,3</b><h3>Nm kracht</h3><p>Genoeg voor duidelijke Force Feedback bij een beginnersstuur. Niet te vergelijken met veel sterkere Direct Drive-systemen.</p></article></div></div></section>
-<section class="section alt" id="vergelijking"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Het kernverschil</span><h2>Toetsenbord versus stuur</h2></div><p>Niet beter voor elk spel. Wel veel geschikter voor een rijsimulator.</p></div><div class="grid two"><article class="compare keyboard"><h3>⌨️ Toetsenbord <span>aan / uit</span></h3><p>Een toets is grofweg: niet sturen, of meteen veel sturen. Je mist de kleine tussenstappen.</p><div class="meter"><i></i></div><div class="sequence">AAN → 100% links<br>W → 100% gas</div></article><article class="compare wheel"><h3>🏎️ G923 <span>analoog</span></h3><p>Je kunt 1%, 10% of 40% sturen en hetzelfde doen met gas, rem en koppeling.</p><div class="meter"><i></i></div><div class="sequence">0° → 10° → 20° → 40° → 90° → 450°</div></article></div></div></section>
-<section class="section" id="demo"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Nieuwe rij-demo</span><h2>Stuur de auto echt over de weg</h2></div><p>De auto rijdt vooruit over een canvas-weg. Sturen verandert de rijlijn, gas verhoogt de snelheid en remmen brengt hem rustig tot stilstand.</p></div><div class="drive-demo"><div class="sim"><canvas id="simCanvas" aria-label="Interactieve autorit"></canvas><div class="sim-label" id="simLabel">G923-modus</div><div class="sim-help">← → sturen · ↑ gas · ↓ rem</div></div><div class="telemetry"><div class="drive-buttons" role="group" aria-label="Kies besturing"><button class="active" data-mode="wheel">G923</button><button data-mode="keyboard">Toetsenbord</button></div><div class="telemetry-card"><strong><span>Sturen</span><span id="steerValue">0°</span></strong><input id="steer" type="range" min="-450" max="450" value="0" aria-label="Sturen"><div class="bar-meter steer"><i id="steerBar"></i></div><small>Laat los: het stuur centreert vanzelf</small></div><div class="telemetry-card"><strong><span>Gas</span><span id="gasValue">0%</span></strong><input id="gas" type="range" min="0" max="100" value="0" aria-label="Gas"><div class="bar-meter"><i id="gasBar"></i></div></div><div class="telemetry-card"><strong><span>Rem</span><span id="brakeValue">0%</span></strong><input id="brake" type="range" min="0" max="100" value="0" aria-label="Rem"><div class="bar-meter brake"><i id="brakeBar"></i></div></div><button class="small-btn" id="ffb">↔ Force Feedback laten reageren</button><div class="feedback" id="feedback"><span class="feedback-dot"></span><span id="feedbackText">De auto staat klaar. Probeer gas en stuur.</span></div><div class="drive-note" id="driveNote">G923: tussenstappen geven controle. Met toetsenbord schakelt de demo naar aan/uit.</div></div></div></div></section>
-<section class="section alt" id="uitleg"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Wat voel je?</span><h2>Force Feedback en TRUEFORCE</h2></div><p>Het stuur vertelt niet alles van een echte auto na. Het geeft informatie terug, zodat je beter merkt wat er gebeurt.</p></div><div class="grid two"><article class="card"><b>↔</b><h3>Force Feedback</h3><p>Het stuur kan terugduwen of bewegen. In een bocht voel je weerstand, bij gripverlies verandert het stuurgedrag en off-road kunnen oneffenheden doorkomen.</p><p><strong>Belangrijk:</strong> het is geen letterlijke kopie van alle krachten in een echte auto.</p></article><article class="card"><b>≈</b><h3>TRUEFORCE</h3><p>Normale Force Feedback zegt: “er gebeurt iets.” TRUEFORCE kan in ondersteunde games extra kleine details laten voelen, zoals motor, wegdek, banden en schakelen.</p><p>Het maakt de G923 niet sterker dan Direct Drive. Het gaat vooral om extra detail.</p></article></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Handen en voeten</span><h2>Alles wat je nodig hebt zit erbij</h2></div><p>Een losse shifter is niet nodig om te beginnen.</p></div><div class="grid two"><div><div class="pedal"><span class="pedal-icon">🟢</span><div><h3>Gas</h3><p>Rustig indrukken voor controle, verder indrukken voor snelheid.</p></div></div><div class="pedal"><span class="pedal-icon">🔴</span><div><h3>Rem</h3><p>Ook doseerbaar. Handig bij bochten en rustig parkeren.</p></div></div><div class="pedal"><span class="pedal-icon">🟡</span><div><h3>Koppeling</h3><p>Voor handmatig schakelen, als je dat wilt gebruiken.</p></div></div></div><div><div class="flip"><span>−</span><strong>STUUR</strong><span>+</span></div><p style="text-align:center;margin:24px auto">Linker paddle = terugschakelen. Rechter paddle = opschakelen. Daarmee kun je schakelen zonder een aparte H-shifter te kopen.</p><div class="callout"><strong>Analoge input in kindertaal</strong><p>Een toetsenbord is als een lichtschakelaar: aan of uit. Een pedaal is als een dimmer: je kunt 0%, 25%, 50% of 100% geven.</p></div></div></div></div></section>
-<section class="section alt"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Draai mee</span><h2>Wat betekent 900°?</h2></div><p>De slider laat zien hoeveel ruimte een echt stuur heeft.</p></div><div class="range-wrap"><div class="degrees" id="degrees">450°</div><input id="rotation" type="range" min="0" max="900" value="450" aria-label="Stuurrotatie"><div style="display:flex;justify-content:space-between;color:var(--muted)"><span>0°</span><span>450°</span><span>900°</span></div></div><p>900° betekent ongeveer 2,5 volledige omwenteling van volledig links naar volledig rechts. Daardoor kun je bij parkeren en kleine correcties preciezer werken.</p></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Waarom BeamNG?</span><h2>Een game die veel aan een stuur heeft</h2></div><p>BeamNG.drive is een physics-simulator: de auto reageert op ondergrond, snelheid, grip en botsingen.</p></div><div class="grid three"><article class="beam-card"><b>🚗 Normaal rijden</b><p>Rustig sturen en gas doseren voelt meer als rijden dan korte knopcommando's.</p></article><article class="beam-card"><b>🏎️ Racen</b><p>Je kunt nauwkeuriger een lijn rijden en remmen voor een bocht.</p></article><article class="beam-card"><b>🛞 Driften</b><p>Kleine tegenstuurbewegingen zijn makkelijker te maken en te corrigeren.</p></article><article class="beam-card"><b>🏔️ Off-road</b><p>Oneffenheden kunnen via Force Feedback voelbaar worden.</p></article><article class="beam-card"><b>🅿️ Parkeren</b><p>900° maakt kleine stuurbewegingen natuurlijker.</p></article><article class="beam-card"><b>💥 Crashes</b><p>Het stuur kan bij een botsing sterk reageren. De sterkte is aan te passen in BeamNG.</p></article></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">De eerlijke vergelijking</span><h2>G923 versus Direct Drive</h2></div><p>De G923 probeert niet het duurste stuur te zijn. Dat is juist het punt.</p></div><table class="table"><thead><tr><th>Eigenschap</th><th>G923</th><th>Direct Drive</th></tr></thead><tbody><tr><td>Beginnersvriendelijk</td><td class="good">⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td></tr><tr><td>Prijs</td><td class="good">Lager</td><td>Veel hoger</td></tr><tr><td>Force Feedback</td><td>Ja</td><td>Ja</td></tr><tr><td>TRUEFORCE</td><td>Ja</td><td>Afhankelijk van model</td></tr><tr><td>Kracht</td><td>Gemiddeld, ongeveer 2,3 Nm</td><td>Veel hoger</td></tr><tr><td>BeamNG</td><td class="good">Goed</td><td>Uitstekend</td></tr><tr><td>Extra accessoires</td><td class="good">Niet noodzakelijk</td><td>Vaak wel</td></tr></tbody></table></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Past het bij de games?</span><h2>Is het geld waard voor mij?</h2></div><p>Kies een game. Het antwoord gaat over het soort spel, niet over een verkooppraatje.</p></div><div class="game" role="group" aria-label="Kies een game"><button data-game="fortnite">🎮 Fortnite</button><button data-game="minecraft">⛏️ Minecraft</button><button class="active" data-game="beamng">🏎️ BeamNG</button><button data-game="ets">🚛 ETS2</button><button data-game="assetto">🏁 Assetto Corsa</button></div><div class="answer" id="answer">⭐⭐⭐⭐⭐ Heel geschikt. BeamNG draait juist om controle, voertuiggedrag en voelen wat de auto doet.</div></div></section>
-<section class="section alt"><div class="wrap"><div class="price"><div><span class="eyebrow" style="color:#315a50">Wat is ongeveer €231?</span><h2>Een complete eerste stap</h2><p>De prijs waar ik hem heb gevonden is ongeveer €231, niet gegarandeerd de actuele prijs.</p><p>Daarvoor krijg je stuur, Force Feedback, TRUEFORCE, 3 pedalen, koppeling, schakelflippers, 900° rotatie en PC-ondersteuning. Een aparte shifter hoeft niet meteen.</p></div><strong>± €231</strong></div></div></section>
-<section class="ending"><div class="wrap"><span class="eyebrow">De nuchtere conclusie</span><h2>Van knop naar controle.</h2><p>Voor iemand die vooral BeamNG.drive speelt, is de G923 een logische eerste stap van toetsenbord/muis naar sim racing. Je krijgt een echt stuur, drie pedalen, schakelflippers, 900° rotatie en Force Feedback zonder meteen naar een veel duurder Direct Drive-systeem te gaan.</p><div class="pill">🎂 Verjaardagsidee: Logitech G923 TRUEFORCE, ± €231</div></div></section>
-</main><footer class="footer"><div class="wrap">Eerlijke productuitleg, zelfstandig HTML-bestand. Compatibiliteit: PC; er bestaan ook Xbox One / Xbox Series X|S-versies. Logitech G HUB kan op PC helpen bij instellingen.</div></footer>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-layout">
+      <div>
+        <div class="badge">Eerlijke en heldere uitleg</div>
+        <h1>Waarom een echt racestuur bij BeamNG past.</h1>
+        <p class="hero-p">
+          In een physics-simulator als BeamNG.drive is een toetsenbord gelimiteerd tot <strong>alles of niets</strong>. 
+          Met een stuur en analoge pedalen kun je exact doseren, kleine stuurcorrecties maken en voelen wat de auto doet. 
+          De <strong>Logitech G923</strong> is de meest complete instapstap zonder de hoofdprijs van Direct Drive.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#simulator" class="btn-primary">Probeer de 3D Simulator ↓</a>
+          <a href="#verschil" class="btn-secondary">Bekijk het verschil</a>
+        </div>
+      </div>
+
+      <div class="wheel-hero-card">
+        <!-- Gedetailleerde SVG van het Logitech G923 Stuur -->
+        <svg class="hero-wheel-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer Rim -->
+          <circle cx="150" cy="150" r="135" stroke="#2a353d" stroke-width="26"/>
+          <circle cx="150" cy="150" r="135" stroke="#1c2328" stroke-width="22" stroke-dasharray="14 6"/>
+          <!-- Top Blue Center Strip -->
+          <path d="M142 16 H158 V36 H142 Z" fill="#5ce1e6"/>
+          <!-- Spokes -->
+          <path d="M40 150 L110 150 L120 180 L180 180 L190 150 L260 150" stroke="#3d4c57" stroke-width="18" stroke-linecap="round"/>
+          <path d="M150 180 L150 260" stroke="#3d4c57" stroke-width="20" stroke-linecap="round"/>
+          <!-- Hub Center -->
+          <circle cx="150" cy="150" r="46" fill="#182026" stroke="#485b69" stroke-width="4"/>
+          <!-- Logitech G Logo representation -->
+          <circle cx="150" cy="150" r="22" stroke="#5ce1e6" stroke-width="4" stroke-dasharray="80 30"/>
+          <!-- Face Buttons -->
+          <circle cx="120" cy="130" r="5" fill="#f25f5c"/>
+          <circle cx="132" cy="120" r="5" fill="#48cfad"/>
+          <circle cx="180" cy="130" r="5" fill="#5ce1e6"/>
+          <circle cx="168" cy="120" r="5" fill="#f5b041"/>
+          <!-- D-Pad & Rotary Knob -->
+          <rect x="108" y="155" width="14" height="14" rx="2" fill="#303d47"/>
+          <circle cx="185" cy="162" r="10" fill="#f25f5c"/>
+        </svg>
+        <div class="wheel-spec-badge">
+          <span>✓ 900° Rotatie</span>
+          <span>✓ TRUEFORCE FFB</span>
+          <span>✓ 3 Pedalen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In 1 oogopslag specs -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">De Basis</span>
+        <h2>Wat maakt de G923 compleet?</h2>
+        <p>Alles wat je nodig hebt om te beginnen zit standaard in de doos, zonder verplichte extra accessoires.</p>
+      </div>
+      <div class="grid-3">
+        <div class="spec-card">
+          <div class="spec-num">900°</div>
+          <h3>Volledige Stuurhoek</h3>
+          <p>Ongeveer 2,5 omwentelingen van uiterst links naar uiterst rechts. Essentieel voor realistisch manoeuvreren en parkeren in BeamNG.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">3x</div>
+          <h3>Progressieve Pedalen</h3>
+          <p>Gas, rem en koppeling. Het rempedaal heeft een progressieve veer voor natuurlijk gevoel en precieze dosering.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">2.3 Nm</div>
+          <h3>Force Feedback Kracht</h3>
+          <p>Krachtig genoeg om duidelijk te voelen wanneer je grip verliest of over oneffenheden rijdt, zonder dat het gevaarlijk hard trekt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vergelijking Toetsenbord vs Stuur -->
+  <section class="section bg-alt" id="verschil">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Het Echte Verschil</span>
+        <h2>Toetsenbord (Aan/Uit) vs Analoog Racestuur</h2>
+        <p>Waarom een toetsenbord in een rijsimulator altijd achterblijft qua controle.</p>
+      </div>
+      <div class="grid-2">
+        <div class="compare-box bad">
+          <div class="compare-title">
+            <h3>⌨️ Toetsenbord & Muis</h3>
+            <span class="compare-pill">Digitale Input</span>
+          </div>
+          <p>Een toets is een schakelaar: 0% of direct 100%. Bij een bocht geef je continu korte 'tikjes' waardoor de auto instabiel wordt.</p>
+          <div class="vis-bar-wrap">
+            <div class="vis-label"><span>Sturen met 'A' of 'D'</span><strong>0% of direct 100%</strong></div>
+            <div class="vis-track"><div class="vis-fill"></div></div>
+          </div>
+          <div class="vis-bar-wrap">
+            <div class="vis-label"><span>Gas geven met 'W'</span><strong>Meteen vol gas</strong></div>
+            <div class="vis-track"><div class="vis-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="compare-box good">
+          <div class="compare-title">
+            <h3>🏎️ Logitech G923</h3>
+            <span class="compare-pill">Volledig Analoog</span>
+          </div>
+          <p>Nauwkeurig doseren. Je kunt 2% sturen voor een subtiele rijbaanwissel of 35% gas geven om wielspin op gravel te voorkomen.</p>
+          <div class="vis-bar-wrap">
+            <div class="vis-label"><span>Doseerbaar Sturen</span><strong>0° tot 450° traploos</strong></div>
+            <div class="vis-track"><div class="vis-fill"></div></div>
+          </div>
+          <div class="vis-bar-wrap">
+            <div class="vis-label"><span>Doseerbaar Gas & Rem</span><strong>0% tot 100% traploos</strong></div>
+            <div class="vis-track"><div class="vis-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D / DRIVING SIMULATOR DEMO -->
+  <section class="section" id="simulator">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Interactieve Rijervaring</span>
+        <h2>Ervaar het verschil in 3D</h2>
+        <p>Bestuur de auto over de kronkelende weg. Merk hoe een toetsenbord houterig aanvoelt en een stuur vloeiende controle biedt.</p>
+      </div>
+
+      <div class="sim-container" id="simContainer">
+        <!-- Canvas Rendering Area -->
+        <div class="canvas-wrapper">
+          <canvas id="raceCanvas"></canvas>
+          <div class="canvas-overlay-top">
+            <div class="hud-chip">Snelheid: <span id="hudSpeed">0</span> km/u</div>
+            <div class="hud-chip">Modus: <span id="hudMode">G923 Analoog</span></div>
+          </div>
+          <div class="canvas-help-bot">
+            Gebruik pijltjestoetsen: [←][→] Sturen · [↑] Gas · [↓] Rem
+          </div>
+        </div>
+
+        <!-- Simulator Controls -->
+        <div class="sim-controls">
+          <div>
+            <div style="font-size:0.85rem; font-weight:750; margin-bottom:8px; color:var(--muted)">BESTURINGSTYPE</div>
+            <div class="mode-switch">
+              <button class="mode-btn active" id="btnModeWheel" onclick="setControlMode('wheel')">G923 Racestuur</button>
+              <button class="mode-btn" id="btnModeKey" onclick="setControlMode('keyboard')">Toetsenbord</button>
+            </div>
+          </div>
+
+          <!-- Stuur Widget -->
+          <div class="cockpit-widget">
+            <div class="widget-row">
+              <span>Stuurhoek</span>
+              <span class="widget-val" id="valSteer">0°</span>
+            </div>
+            <input type="range" id="sliderSteer" class="pedal-range" min="-450" max="450" value="0">
+            <div class="pedal-bar"><div class="pedal-fill fill-steer" id="barSteer"></div></div>
+            <small style="font-size:0.75rem; color:var(--muted)">Centreert automatisch bij loslaten (Force Feedback)</small>
+          </div>
+
+          <!-- Gas Widget -->
+          <div class="cockpit-widget">
+            <div class="widget-row">
+              <span>Gaspedaal</span>
+              <span class="widget-val" id="valThrottle">0%</span>
+            </div>
+            <input type="range" id="sliderThrottle" class="pedal-range" min="0" max="100" value="0">
+            <div class="pedal-bar"><div class="pedal-fill fill-throttle" id="barThrottle"></div></div>
+          </div>
+
+          <!-- Rem Widget -->
+          <div class="cockpit-widget">
+            <div class="widget-row">
+              <span>Rempedaal</span>
+              <span class="widget-val" id="valBrake">0%</span>
+            </div>
+            <input type="range" id="sliderBrake" class="pedal-range" min="0" max="100" value="0">
+            <div class="pedal-bar"><div class="pedal-fill fill-brake" id="barBrake"></div></div>
+          </div>
+
+          <!-- FFB Test -->
+          <div>
+            <button class="ffb-trigger-btn" id="btnFfb" onclick="triggerFFBDemo()">
+              <span>⚡ Test Force Feedback & Trilling</span>
+            </button>
+          </div>
+
+          <div class="ffb-status-box" id="ffbStatus">
+            <div class="ffb-led"></div>
+            <span id="ffbText">Stuur is neutraal en stabiel.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Force Feedback & TRUEFORCE -->
+  <section class="section bg-alt" id="feedback">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Wat je echt voelt</span>
+        <h2>Force Feedback & TRUEFORCE uitgelegd</h2>
+        <p>Een racestuur is geen gewone controller: een interne motor duwt actief terug tegen je handen.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="spec-card">
+          <div class="spec-num">↔</div>
+          <h3>Force Feedback (FFB)</h3>
+          <p>Wanneer de voorbanden grip verliezen (onderstuur), wordt het stuur plotseling licht in je handen. In een snelle bocht voel je juist de tegendruk van de banden op het asfalt. Bij een botsing in BeamNG reageert het stuur direct.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">≈</div>
+          <h3>TRUEFORCE Technologie</h3>
+          <p>Traditionele FFB berekent krachten op een basisniveau. TRUEFORCE voegt daar haptische hoogfrequente audio/fysica-feedback aan toe: je voelt de motor trillen, het profiel van het wegdek en het moment van schakelen in het stuurwiel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Pedalen en Schakelflippers -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Bediening</span>
+        <h2>3 Pedalen & Geïntegreerde Schakelflippers</h2>
+        <p>Geen extra losse versnellingspook nodig om volwaardig te kunnen schakelen.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="spec-card">
+          <h3>Pedalenset met 3 Pedalen</h3>
+          <p style="margin-bottom: 16px;">
+            <strong>🟢 Gas:</strong> Licht en direct doseerbaar.<br>
+            <strong>🔴 Rem:</strong> Progressieve veer voor natuurlijke spiergeheugen-remkracht.<br>
+            <strong>🟡 Koppeling:</strong> Klaar voor handmatig schakelen wanneer je wilt.
+          </p>
+          <div style="background:var(--surface); padding:12px; border-radius:8px; font-size:0.85rem; color:var(--muted)">
+            💡 <em>Kindertaal:</em> Een toetsenbord is een gewone aan/uit lamp. Een pedaal is een draaiknop waarmee je precies bepaalt hoeveel licht (kracht) je geeft.
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <h3>Metalen Schakelflippers (Paddles)</h3>
+          <p>
+            Achter het stuur zitten twee robuuste roestvrijstalen flippers:<br>
+            <strong>[ − ] Links:</strong> Terugschakelen<br>
+            <strong>[ + ] Rechts:</strong> Opschakelen
+          </p>
+          <p style="margin-top: 12px;">
+            Hiermee schakel je razendsnel zonder je handen van het stuur te halen, precies zoals in moderne sportwagens. Er hoeft dus <strong>geen aparte H-shifter</strong> aangeschaft te worden.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 900 Graden Rotatie Slider -->
+  <section class="section bg-alt">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Stuurhoek</span>
+        <h2>Wat betekent 900° Stuurrotatie?</h2>
+        <p>Beweeg de schuifregelaar hieronder om te zien hoe ver een echt stuur draait.</p>
+      </div>
+
+      <div class="rotation-widget">
+        <div class="wheel-interactive-wrap">
+          <svg id="interactiveWheelSvg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="135" stroke="#2a353d" stroke-width="26"/>
+            <path d="M142 16 H158 V36 H142 Z" fill="#5ce1e6"/>
+            <path d="M40 150 L110 150 L120 180 L180 180 L190 150 L260 150" stroke="#3d4c57" stroke-width="18" stroke-linecap="round"/>
+            <path d="M150 180 L150 260" stroke="#3d4c57" stroke-width="20" stroke-linecap="round"/>
+            <circle cx="150" cy="150" r="46" fill="#182026" stroke="#485b69" stroke-width="4"/>
+            <circle cx="150" cy="150" r="22" stroke="#5ce1e6" stroke-width="4" stroke-dasharray="80 30"/>
+          </svg>
+          <span style="font-size:0.85rem; color:var(--muted); font-weight:600">Interactieve Stuurweergave</span>
+        </div>
+
+        <div class="deg-slider-wrap">
+          <div class="deg-big-num" id="bigDegreeText">450°</div>
+          <input type="range" id="wheelAngleSlider" class="pedal-range" min="0" max="900" value="450" oninput="updateWheelAngleVisual(this.value)">
+          <div style="display:flex; justify-content:space-between; color:var(--muted); font-size:0.85rem;">
+            <span>0° (Uiterst Links)</span>
+            <span>450° (Midden)</span>
+            <span>900° (Uiterst Rechts)</span>
+          </div>
+          <p>
+            900 graden betekent <strong>2,5 volledige omwentelingen</strong>. Hierdoor heb je bij het parkeren of nauwkeurig sturen alle ruimte voor micro-correcties, zonder dat de auto meteen wegschiet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waarom BeamNG? -->
+  <section class="section" id="beamng">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Physics Simulator</span>
+        <h2>Waarom past een stuur zo goed bij BeamNG.drive?</h2>
+        <p>BeamNG simuleert elk auto-onderdeel: wielophanging, bandvervorming en gewichtsverplaatsing.</p>
+      </div>
+
+      <div class="beam-grid">
+        <div class="beam-card">
+          <div class="beam-icon">🚗</div>
+          <h3>Normaal Rijden</h3>
+          <p>Ontspannen cruisen over wegen met realistische snelheidscontrole en vloeiende bochten.</p>
+        </div>
+        <div class="beam-card">
+          <div class="beam-icon">🏎️</div>
+          <h3>Circuit & Racen</h3>
+          <p>Nauwkeurig de ideale racelijn vasthouden en progressief aanremmen voor apexen.</p>
+        </div>
+        <div class="beam-card">
+          <div class="beam-icon">🛞</div>
+          <h3>Driften</h3>
+          <p>Dankzij Force Feedback voel je exact het moment van gripverlies en stuur je natuurlijk tegen.</p>
+        </div>
+        <div class="beam-card">
+          <div class="beam-icon">🏔️</div>
+          <h3>Off-Road & Rock Crawling</h3>
+          <p>Met uiterste precisie gas doseren over rotsen zonder de wielen door te laten slippen.</p>
+        </div>
+        <div class="beam-card">
+          <div class="beam-icon">🅿️</div>
+          <h3>Manoeuvreren & Parkeren</h3>
+          <p>Met de 900° rotatie stuur je natuurlijk in krappe straatjes en parkeervakken.</p>
+        </div>
+        <div class="beam-card">
+          <div class="beam-icon">💥</div>
+          <h3>Physics & Crashes</h3>
+          <p>Het stuur reageert voelbaar op botsingen en vervorming van de wielophanging.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- G923 vs Direct Drive -->
+  <section class="section bg-alt" id="directdrive">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Eerlijke Vergelijking</span>
+        <h2>G923 vs Veel Duurdere Direct Drive</h2>
+        <p>Waarom een Direct Drive systeem voor beginners vaak overdreven en onnodig duur is.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Eigenschap</th>
+              <th>Logitech G923</th>
+              <th>Direct Drive Systemen (bijv. Fanatec / Moza)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Instapprijs</strong></td>
+              <td class="highlight-cyan">± €231 (Compleet met pedalen)</td>
+              <td>Vaak €500 tot €1200+ (excl. accessoires)</td>
+            </tr>
+            <tr>
+              <td><strong>Installatie</strong></td>
+              <td class="highlight-cyan">Eenvoudig met bureauklemmen</td>
+              <td>Vereist vaak een zwaar, dedicated sim-rig frame</td>
+            </tr>
+            <tr>
+              <td><strong>Pedalen Meegeleverd</strong></td>
+              <td class="highlight-cyan">Ja, 3 pedalen inbegrepen</td>
+              <td>Vaak los bij te bestellen</td>
+            </tr>
+            <tr>
+              <td><strong>Force Feedback Systeem</strong></td>
+              <td>Tandwiel-aangedreven met TRUEFORCE</td>
+              <td>Directe industriële elektromotor</td>
+            </tr>
+            <tr>
+              <td><strong>Geschikt als 1e Stuur</strong></td>
+              <td class="highlight-cyan">Ideale prijs/kwaliteit balans</td>
+              <td>Duur voor een eerste kennismaking</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game Selector -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-tag">Spelanalyse</span>
+        <h2>Is dit stuur het geld waard voor mijn games?</h2>
+        <p>Klik op een game om te zien hoe zinvol een stuur daarvoor is.</p>
+      </div>
+
+      <div class="game-chips">
+        <button class="game-chip" onclick="selectGame(this, 'fortnite')">🎮 Fortnite</button>
+        <button class="game-chip" onclick="selectGame(this, 'minecraft')">⛏️ Minecraft</button>
+        <button class="game-chip active" onclick="selectGame(this, 'beamng')">🏎️ BeamNG.drive</button>
+        <button class="game-chip" onclick="selectGame(this, 'ets2')">🚛 Euro Truck Simulator 2</button>
+        <button class="game-chip" onclick="selectGame(this, 'assetto')">🏁 Assetto Corsa</button>
+      </div>
+
+      <div class="game-result-card" id="gameResultText">
+        ⭐⭐⭐⭐⭐ <strong>Heel geschikt:</strong> BeamNG draait volledig om voertuigdynamiek en gewichtsverplaatsing. Een stuur maakt de simulator pas echt compleet.
+      </div>
+    </div>
+  </section>
+
+  <!-- Prijs Overzicht -->
+  <section class="section bg-alt">
+    <div class="wrap">
+      <div class="price-card">
+        <div>
+          <span class="sec-tag" style="color:var(--cyan)">Complete Set</span>
+          <h2 style="margin: 8px 0 16px;">Wat krijg je voor ongeveer €231?</h2>
+          <p style="color:#b5cbd0;">
+            De set bevat het stuur met Force Feedback & TRUEFORCE, een complete pedalenset met 3 pedalen (gas, rem, koppeling) en geïntegreerde metalen schakelflippers. Compatibel met PC en direct klaar voor gebruik via USB.
+          </p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.85rem; color:#87abb0; font-weight:700;">Gevonden Richtprijs</div>
+          <div class="price-tag-big">± €231</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusie -->
+  <section class="conclusion">
+    <div class="wrap">
+      <span class="sec-tag">Conclusie</span>
+      <h2>Van knoppen indrukken naar echt autorijden.</h2>
+      <p style="font-size:1.15rem; margin-top:16px;">
+        Voor iemand die vooral <strong>BeamNG.drive</strong> speelt, is de Logitech G923 een logische eerste stap van toetsenbord en muis naar sim racing. 
+        Je krijgt 900° stuurrotatie, drie pedalen, schakelflippers en voelbare Force Feedback zonder direct honderden euro's extra uit te geven aan complexe Direct Drive apparatuur.
+      </p>
+
+      <div class="bday-card">
+        <div class="bday-icon">🎂</div>
+        <div>
+          <div style="font-weight:800; font-size:1.15rem; color:#fff;">Verjaardagsidee: Logitech G923 TRUEFORCE</div>
+          <div style="color:var(--muted); font-size:0.9rem;">Een cadeau dat specifiek en gericht aansluit bij de games die ik speel.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
 <script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let mode='wheel',keys={};const state={steer:0,gas:0,brake:0,speed:0,lane:0,road:0};const canvas=$('#simCanvas'),ctx=canvas.getContext('2d'),steerInput=$('#steer'),gasInput=$('#gas'),brakeInput=$('#brake');
-function resize(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0)}addEventListener('resize',resize);resize();
-function update(){const target=mode==='keyboard'?(keys.ArrowLeft?-450:keys.ArrowRight?450:0):+steerInput.value;const rate=mode==='wheel'&&document.activeElement!==steerInput?12:5;state.steer+=(target-state.steer)/rate;if(mode==='wheel'&&document.activeElement===steerInput)state.steer=+steerInput.value;const gas=mode==='keyboard'?(keys.ArrowUp?100:0):+gasInput.value,brake=mode==='keyboard'?(keys.ArrowDown?100:0):+brakeInput.value;state.gas=gas;state.brake=brake;state.speed=Math.max(0,Math.min(100,state.speed+gas*.055-brake*.11-.02));state.lane+=(state.steer/450)*.08;state.lane*=.985;state.lane=Math.max(-1,Math.min(1,state.lane));state.road+=state.speed*.07;draw();$('#steerValue').textContent=Math.round(state.steer)+'°';$('#gasValue').textContent=Math.round(gas)+'%';$('#brakeValue').textContent=Math.round(brake)+'%';$('#steerBar').style.width=Math.abs(state.steer)/4.5+'%';$('#gasBar').style.width=gas+'%';$('#brakeBar').style.width=brake+'%';$('#driveNote').textContent=mode==='keyboard'?'Toetsenbord: houd ←/→ vast om te sturen, ↑ om sneller te gaan en ↓ om te remmen.':'G923: het stuur centreert vanzelf wanneer je het loslaat. Gas en rem veranderen de snelheid rustig.';requestAnimationFrame(update)}
-function draw(){const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);ctx.fillStyle='#78969a';ctx.fillRect(0,0,w,h*.42);ctx.fillStyle='#6d806b';ctx.fillRect(0,h*.42,w,h*.1);ctx.fillStyle='#25292b';ctx.beginPath();ctx.moveTo(w*.22,h);ctx.lineTo(w*.78,h);ctx.lineTo(w*.59,h*.42);ctx.lineTo(w*.41,h*.42);ctx.closePath();ctx.fill();const roadLeft=w*.22,roadRight=w*.78;ctx.strokeStyle='#c8b477';ctx.lineWidth=4;ctx.setLineDash([22,26]);ctx.lineDashOffset=-state.road;ctx.beginPath();ctx.moveTo(roadLeft,h);ctx.lineTo(w*.41,h*.42);ctx.moveTo(roadRight,h);ctx.lineTo(w*.59,h*.42);ctx.stroke();ctx.setLineDash([18,28]);ctx.strokeStyle='#858b86';ctx.lineWidth=3;for(let i=0;i<6;i++){const y=h*.44+((i*68+state.road*1.5)%(h*.56));const t=(y-h*.42)/(h*.58),x=w/2+(state.lane*45*t);ctx.beginPath();ctx.moveTo(x-2,y);ctx.lineTo(x+2,y+Math.max(8,t*18));ctx.stroke()}ctx.setLineDash([]);const cx=w/2+state.lane*70,cy=h*.72;ctx.save();ctx.translate(cx,cy);ctx.rotate(state.steer*.0008);ctx.shadowColor='#0b0d0d99';ctx.shadowBlur=18;ctx.shadowOffsetY=10;ctx.fillStyle=state.brake>2?'#ef8f8f':'#8bd6c2';ctx.strokeStyle='#d8fff0';ctx.lineWidth=3;roundRect(ctx,-52,-30,104,60,14);ctx.fill();ctx.stroke();ctx.fillStyle='#5d7778';roundRect(ctx,-27,-32,54,28,12);ctx.fill();ctx.fillStyle='#17272b';roundRect(ctx,-21,-27,42,18,7);ctx.fill();ctx.fillStyle='#1d2426';ctx.beginPath();ctx.arc(-32,25,11,0,Math.PI*2);ctx.arc(32,25,11,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle='#dce5e0';ctx.font='700 14px system-ui';ctx.fillText(state.speed<2?'STILSTAAND':'RIJDEN',18,h-20)}
-function roundRect(c,x,y,w,h,r){c.beginPath();c.roundRect(x,y,w,h,r);c.closePath()}
-steerInput.addEventListener('input',()=>{if(mode==='wheel')state.steer=+steerInput.value});$$('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;$$('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));$('#simLabel').textContent=mode==='wheel'?'G923-modus':'Toetsenbord-modus'}));addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();keys[e.key]=true}});addEventListener('keyup',e=>{keys[e.key]=false});$('#ffb').addEventListener('click',()=>{$('#feedback').classList.remove('on');void $('#feedback').offsetWidth;$('#feedback').classList.add('on');$('#feedbackText').textContent='Het stuur trilt kort: weerstand en trillingen kunnen informatie geven over grip, wegdek of een botsing.';setTimeout(()=>$('#feedback').classList.remove('on'),1400)});$('#rotation').addEventListener('input',e=>$('#degrees').textContent=e.target.value+'°');const answers={fortnite:'⭐ Niet echt nodig. Fortnite draait niet om voertuigbesturing.',minecraft:'⭐ Niet echt nodig. Minecraft kun je prima met toetsenbord en muis spelen.',beamng:'⭐⭐⭐⭐⭐ Heel geschikt. BeamNG draait juist om controle, voertuiggedrag en voelen wat de auto doet.',ets:'⭐⭐⭐⭐⭐ Heel geschikt. Een stuur past goed bij lange ritten en rustig manoeuvreren.',assetto:'⭐⭐⭐⭐⭐ Heel geschikt. Assetto Corsa is gemaakt rondom nauwkeurig rijden.'};$$('[data-game]').forEach(b=>b.addEventListener('click',()=>{$$('[data-game]').forEach(x=>x.classList.toggle('active',x===b));$('#answer').textContent=answers[b.dataset.game]}));update();
-</script></body></html>
+/* =========================================================
+   3D RACING SIMULATOR ENGINE (VANILLA CANVAS RENDERING)
+   ========================================================= */
+const canvas = document.getElementById('raceCanvas');
+const ctx = canvas.getContext('2d');
+
+let controlMode = 'wheel'; // 'wheel' | 'keyboard'
+let keys = { left: false, right: false, up: false, down: false };
+
+// Car Physics State
+const car = {
+  x: 0,              // -1 (left grass) to 1 (right grass)
+  speed: 0,          // km/h
+  steerAngle: 0,     // -450 to 450 degrees
+  throttle: 0,       // 0 to 100%
+  brake: 0,          // 0 to 100%
+  distance: 0,       // Track progression
+  targetSteer: 0
+};
+
+// Road Curve Generation
+function getRoadCurve(z) {
+  return Math.sin(z * 0.0015) * 1.2 + Math.cos(z * 0.003) * 0.6;
+}
+
+// Handle Canvas Resize
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// Input listeners
+const sliderSteer = document.getElementById('sliderSteer');
+const sliderThrottle = document.getElementById('sliderThrottle');
+const sliderBrake = document.getElementById('sliderBrake');
+
+sliderSteer.addEventListener('input', (e) => {
+  if (controlMode === 'wheel') car.steerAngle = parseFloat(e.target.value);
+});
+sliderThrottle.addEventListener('input', (e) => {
+  if (controlMode === 'wheel') car.throttle = parseFloat(e.target.value);
+});
+sliderBrake.addEventListener('input', (e) => {
+  if (controlMode === 'wheel') car.brake = parseFloat(e.target.value);
+});
+
+// Keyboard driving controls
+window.addEventListener('keydown', (e) => {
+  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+    e.preventDefault();
+  }
+  if (e.key === 'ArrowLeft') keys.left = true;
+  if (e.key === 'ArrowRight') keys.right = true;
+  if (e.key === 'ArrowUp') keys.up = true;
+  if (e.key === 'ArrowDown') keys.down = true;
+});
+
+window.addEventListener('keyup', (e) => {
+  if (e.key === 'ArrowLeft') keys.left = false;
+  if (e.key === 'ArrowRight') keys.right = false;
+  if (e.key === 'ArrowUp') keys.up = false;
+  if (e.key === 'ArrowDown') keys.down = false;
+});
+
+function setControlMode(mode) {
+  controlMode = mode;
+  document.getElementById('btnModeWheel').classList.toggle('active', mode === 'wheel');
+  document.getElementById('btnModeKey').classList.toggle('active', mode === 'keyboard');
+  document.getElementById('hudMode').textContent = mode === 'wheel' ? 'G923 Analoog' : 'Toetsenbord (Aan/Uit)';
+}
+
+// Force Feedback test function
+let ffbActive = false;
+function triggerFFBDemo() {
+  if (ffbActive) return;
+  ffbActive = true;
+  const container = document.getElementById('simContainer');
+  const ffbStatus = document.getElementById('ffbStatus');
+  const ffbText = document.getElementById('ffbText');
+  
+  container.classList.add('sim-shaking');
+  ffbStatus.classList.add('ffb-active');
+  ffbText.textContent = "TRUEFORCE Haptische vibratie & weerstand actief!";
+  
+  // Stuur centreert automatisch met tegenkracht
+  car.steerAngle = 0;
+  sliderSteer.value = 0;
+  
+  setTimeout(() => {
+    container.classList.remove('sim-shaking');
+    ffbStatus.classList.remove('ffb-active');
+    ffbText.textContent = "Stuur is weer neutraal en stabiel.";
+    ffbActive = false;
+  }, 1400);
+}
+
+// 900 Degrees Interactive Section Update
+function updateWheelAngleVisual(deg) {
+  document.getElementById('bigDegreeText').textContent = deg + '°';
+  const rotationOffset = deg - 450;
+  document.getElementById('interactiveWheelSvg').style.transform = `rotate(${rotationOffset}deg)`;
+}
+
+// Game Selection Helper
+const gameResponses = {
+  fortnite: "⭐ <strong>Niet echt nodig:</strong> Fortnite is een shooter en bouwen doe je met muis en toetsenbord.",
+  minecraft: "⭐ <strong>Niet nodig:</strong> Minecraft speel je het beste met toetsenbord en muis.",
+  beamng: "⭐⭐⭐⭐⭐ <strong>Heel geschikt:</strong> BeamNG draait volledig om voertuigdynamiek en gewichtsverplaatsing. Een stuur maakt de simulator pas echt compleet.",
+  ets2: "⭐⭐⭐⭐⭐ <strong>Heel geschikt:</strong> Ideaal voor ontspannen rijden over lange afstanden en precies parkeren van zware vrachtwagens.",
+  assetto: "⭐⭐⭐⭐⭐ <strong>Heel geschikt:</strong> Een pure racegame waarbij millimeterprecisie en stuurgevoel essentieel zijn."
+};
+
+function selectGame(btn, gameKey) {
+  document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('gameResultText').innerHTML = gameResponses[gameKey];
+}
+
+/* =========================================================
+   MAIN PHYSICS & RENDER LOOP
+   ========================================================= */
+function updateSimulation() {
+  // Input resolution
+  if (controlMode === 'keyboard') {
+    // Keyboard is strictly ON / OFF
+    car.targetSteer = keys.left ? -450 : (keys.right ? 450 : 0);
+    car.throttle = keys.up ? 100 : 0;
+    car.brake = keys.down ? 100 : 0;
+    // Fast snap for keyboard
+    car.steerAngle += (car.targetSteer - car.steerAngle) * 0.25;
+    sliderSteer.value = car.steerAngle;
+    sliderThrottle.value = car.throttle;
+    sliderBrake.value = car.brake;
+  } else {
+    // Wheel mode: Smooth self-centering when not dragged
+    if (keys.left) car.steerAngle = Math.max(-450, car.steerAngle - 18);
+    if (keys.right) car.steerAngle = Math.min(450, car.steerAngle + 18);
+    if (keys.up) car.throttle = Math.min(100, car.throttle + 4);
+    if (keys.down) car.brake = Math.min(100, car.brake + 6);
+    
+    // Auto-center spring effect if not typing
+    if (!keys.left && !keys.right && document.activeElement !== sliderSteer) {
+      car.steerAngle *= 0.88;
+      sliderSteer.value = car.steerAngle;
+    }
+    if (!keys.up && document.activeElement !== sliderThrottle) {
+      car.throttle *= 0.92;
+      sliderThrottle.value = car.throttle;
+    }
+    if (!keys.down && document.activeElement !== sliderBrake) {
+      car.brake *= 0.85;
+      sliderBrake.value = car.brake;
+    }
+  }
+
+  // Physics calculation
+  const accel = (car.throttle / 100) * 1.8;
+  const decel = (car.brake / 100) * 3.6 + 0.15; // Natural rolling resistance
+  
+  car.speed = Math.max(0, Math.min(180, car.speed + accel - decel));
+  car.distance += car.speed * 0.5;
+
+  // Steering moves car laterally
+  const steerNormalized = car.steerAngle / 450;
+  car.x += steerNormalized * (car.speed / 180) * 0.045;
+  // Natural road friction brings car slightly toward road center
+  car.x = Math.max(-1.4, Math.min(1.4, car.x));
+
+  // Update telemetry UI
+  document.getElementById('hudSpeed').textContent = Math.round(car.speed);
+  document.getElementById('valSteer').textContent = Math.round(car.steerAngle) + '°';
+  document.getElementById('valThrottle').textContent = Math.round(car.throttle) + '%';
+  document.getElementById('valBrake').textContent = Math.round(car.brake) + '%';
+
+  document.getElementById('barSteer').style.width = `${Math.abs(car.steerAngle) / 4.5}%`;
+  document.getElementById('barThrottle').style.width = `${car.throttle}%`;
+  document.getElementById('barBrake').style.width = `${car.brake}%`;
+
+  renderScene();
+  requestAnimationFrame(updateSimulation);
+}
+
+/* =========================================================
+   CANVAS 3D PERSPECTIVE RENDERING
+   ========================================================= */
+function renderScene() {
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+  ctx.clearRect(0, 0, w, h);
+
+  // Horizon & Sky
+  const horizonY = h * 0.42;
+  const skyGradient = ctx.createLinearGradient(0, 0, 0, horizonY);
+  skyGradient.addColorStop(0, '#091319');
+  skyGradient.addColorStop(1, '#1b2c36');
+  ctx.fillStyle = skyGradient;
+  ctx.fillRect(0, 0, w, horizonY);
+
+  // Distant Mountains
+  ctx.fillStyle = '#111d24';
+  ctx.beginPath();
+  ctx.moveTo(0, horizonY);
+  for (let x = 0; x <= w; x += 40) {
+    const my = horizonY - 18 - Math.sin((x + car.distance * 0.05) * 0.02) * 14;
+    ctx.lineTo(x, my);
+  }
+  ctx.lineTo(w, horizonY);
+  ctx.fill();
+
+  // Ground Grass
+  ctx.fillStyle = '#16281e';
+  ctx.fillRect(0, horizonY, w, h - horizonY);
+
+  // Draw 3D Road Segments
+  const segments = 45;
+  for (let i = segments; i >= 1; i--) {
+    const z1 = i * 20;
+    const z2 = (i - 1) * 20;
+    
+    const p1 = project3D(z1, w, h, horizonY);
+    const p2 = project3D(z2, w, h, horizonY);
+
+    // Alternate grass / curb colors
+    const isAlt = Math.floor((z1 + car.distance) / 40) % 2 === 0;
+
+    // Road Polygon
+    ctx.fillStyle = isAlt ? '#21282e' : '#1c2227';
+    ctx.beginPath();
+    ctx.moveTo(p1.x - p1.w, p1.y);
+    ctx.lineTo(p1.x + p1.w, p1.y);
+    ctx.lineTo(p2.x + p2.w, p2.y);
+    ctx.lineTo(p2.x - p2.w, p2.y);
+    ctx.fill();
+
+    // Road Curbs (Red/White)
+    const curbW1 = p1.w * 0.12;
+    const curbW2 = p2.w * 0.12;
+    ctx.fillStyle = isAlt ? '#f25f5c' : '#ffffff';
+    // Left Curb
+    ctx.beginPath();
+    ctx.moveTo(p1.x - p1.w - curbW1, p1.y);
+    ctx.lineTo(p1.x - p1.w, p1.y);
+    ctx.lineTo(p2.x - p2.w, p2.y);
+    ctx.lineTo(p2.x - p2.w - curbW2, p2.y);
+    ctx.fill();
+    // Right Curb
+    ctx.beginPath();
+    ctx.moveTo(p1.x + p1.w, p1.y);
+    ctx.lineTo(p1.x + p1.w + curbW1, p1.y);
+    ctx.lineTo(p2.x + p2.w + curbW2, p2.y);
+    ctx.lineTo(p2.x + p2.w, p2.y);
+    ctx.fill();
+
+    // Dashed Center Line
+    if (isAlt) {
+      ctx.fillStyle = '#f5b041';
+      const lineW1 = p1.w * 0.03;
+      const lineW2 = p2.w * 0.03;
+      ctx.beginPath();
+      ctx.moveTo(p1.x - lineW1, p1.y);
+      ctx.lineTo(p1.x + lineW1, p1.y);
+      ctx.lineTo(p2.x + lineW2, p2.y);
+      ctx.lineTo(p2.x - lineW2, p2.y);
+      ctx.fill();
+    }
+  }
+
+  // Draw Player's 3D Car
+  drawPlayerCar(w, h);
+}
+
+// 3D Projection helper
+function project3D(z, w, h, horizonY) {
+  const roadWorldZ = z + car.distance;
+  const curve = getRoadCurve(roadWorldZ);
+  const scale = 140 / (z + 40);
+  const projectedX = (w / 2) + (curve - car.x * 1.8) * (w * 0.35) * scale;
+  const projectedY = horizonY + (1 / scale) * 0.14 * (h - horizonY);
+  const roadWidth = (w * 0.75) * scale;
+  return { x: projectedX, y: projectedY, w: roadWidth };
+}
+
+// Draw realistic sports car from behind
+function drawPlayerCar(w, h) {
+  const carX = w / 2;
+  const carY = h * 0.82;
+  const rollAngle = (car.steerAngle / 450) * 0.12;
+
+  ctx.save();
+  ctx.translate(carX, carY);
+  ctx.rotate(rollAngle);
+
+  // Shadow
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.55)';
+  ctx.beginPath();
+  ctx.ellipse(0, 32, 70, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Tires
+  ctx.fillStyle = '#111518';
+  ctx.fillRect(-62, 10, 20, 30);
+  ctx.fillRect(42, 10, 20, 30);
+
+  // Main Car Body (Cyan Sportscar)
+  ctx.fillStyle = car.brake > 10 ? '#ff5252' : '#5ce1e6';
+  ctx.beginPath();
+  ctx.roundRect(-54, -12, 108, 38, 8);
+  ctx.fill();
+
+  // Rear Diffuser
+  ctx.fillStyle = '#141c22';
+  ctx.fillRect(-48, 14, 96, 12);
+
+  // Cabin / Roof
+  ctx.fillStyle = '#1b262e';
+  ctx.beginPath();
+  ctx.moveTo(-36, -12);
+  ctx.lineTo(-24, -36);
+  ctx.lineTo(24, -36);
+  ctx.lineTo(36, -12);
+  ctx.closePath();
+  ctx.fill();
+
+  // Rear Window
+  ctx.fillStyle = '#0a1014';
+  ctx.beginPath();
+  ctx.moveTo(-28, -14);
+  ctx.lineTo(-20, -32);
+  ctx.lineTo(20, -32);
+  ctx.lineTo(28, -14);
+  ctx.closePath();
+  ctx.fill();
+
+  // Taillights (Glow red when braking)
+  ctx.fillStyle = car.brake > 10 ? '#ff1744' : '#d32f2f';
+  ctx.shadowColor = car.brake > 10 ? '#ff1744' : 'transparent';
+  ctx.shadowBlur = car.brake > 10 ? 16 : 0;
+  ctx.fillRect(-50, -4, 24, 8);
+  ctx.fillRect(26, -4, 24, 8);
+  ctx.shadowBlur = 0;
+
+  // License plate
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(-14, 2, 28, 10);
+  ctx.fillStyle = '#000';
+  ctx.font = '700 7px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('G923', 0, 10);
+
+  ctx.restore();
+}
+
+// Start simulation loop
+updateSimulation();
+</script>
+</body>
+</html>
