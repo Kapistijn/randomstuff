@@ -1710,5 +1710,54 @@ footer p + p{ margin-top:8px; }
   }
   follow();
 })();
+</script><script>
+(function(){
+  const slider=document.getElementById('demoWheelSlider');
+  const rotor=document.getElementById('demoWheelRotor');
+  const button=document.getElementById('ffbBtn');
+  const caption=document.getElementById('ffbCaption');
+  const car=document.getElementById('driveCar');
+  if(!slider||!rotor||!button||!car)return;
+  let active=false,held=false,lastAngle=0,releaseTimer=0;
+  function angle(){return Number(slider.value)||0}
+  function surface(){
+    const t=car.getAttribute('transform')||'';
+    const m=t.match(/translate\(\s*(-?[0-9.]+)[ ,]+(-?[0-9.]+)/);
+    if(!m)return 'road';
+    const x=Number(m[1]),y=Number(m[2]);
+    return (x<62||x>238||y<28||y>142)?'grass':'road';
+  }
+  function render(){
+    const base=angle();
+    let wobble=0;
+    if(active&&surface()==='grass'&&Math.abs(base)>8){
+      wobble=Math.sin(performance.now()/43)*Math.min(12,Math.abs(base)/24);
+    }
+    rotor.setAttribute('transform','rotate('+(base+wobble)+' 100 100)');
+    requestAnimationFrame(render);
+  }
+  function center(){
+    if(!active||held)return;
+    clearTimeout(releaseTimer);
+    releaseTimer=setTimeout(()=>{
+      slider.value='0';
+      slider.dispatchEvent(new Event('input',{bubbles:true}));
+      lastAngle=0;
+    },80);
+  }
+  ['pointerdown','mousedown','touchstart','focus'].forEach(e=>slider.addEventListener(e,()=>{held=true}));
+  ['pointerup','mouseup','touchend','blur','change'].forEach(e=>slider.addEventListener(e,()=>{held=false;center()}));
+  document.addEventListener('pointerdown',e=>{if(e.target!==slider&&!slider.contains(e.target)){held=false;center()}});
+  button.addEventListener('click',e=>{
+    e.preventDefault();
+    active=!ctive;
+    button.textContent=active?'true':'false';
+    button.setAttribute('aria-pressed',String(active));
+    caption.textContent=active?'Actief: op gras trilt het stuur heen en weer. Op asfalt blijft het rustig en centreert het bij loslaten.':'Uut: het stuur volgt alleen de slider.';
+    if(active)center();
+  });
+  slider.addEventListener('input',(response)=>{});
+  render();
+})();
 </script></body>
 </html>
