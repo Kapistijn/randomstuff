@@ -1,0 +1,25 @@
+name: Dynamic follow camera v5
+on:
+  push:
+    paths:
+      - '.github/workflows/camera-follow-v5.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject follow camera
+        run: |
+          echo PHNjcmlwdD4KKGZ1bmN0aW9uKCl7CiAgY29uc3QgdHJhY2s9ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLmRyaXZlLXRyYWNrJyk7CiAgY29uc3QgY2FyPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdkcml2ZUNhcicpOwogIGlmKCF0cmFja3x8IWNhcilyZXR1cm47CiAgbGV0IGN4PTAsY3k9MCxyZWFkeT1mYWxzZTsKICBmdW5jdGlvbiBmb2xsb3coKXsKICAgIGNvbnN0IHQ9Y2FyLmdldEF0dHJpYnV0ZSgndHJhbnNmb3JtJyl8fCcnOwogICAgY29uc3QgbT10Lm1hdGNoKC90cmFuc2xhdGVcKFxzKigtP1swLTkuXSspWyAsXSsoLT9bMC05Ll0rKS8pOwogICAgaWYobSl7CiAgICAgIGNvbnN0IHg9cGFyc2VGbG9hdChtWzFdKSx5PXBhcnNlRmxvYXQobVsyXSk7CiAgICAgIGlmKCFyZWFkeSl7Y3g9eC0xNTA7Y3k9eS04NTtyZWFkeT10cnVlfQogICAgICBjeCs9KHgtMTUwLWN4KSouMTY7Y3krPSh5LTg1LWN5KSouMTY7CiAgICAgIHRyYWNrLnNldEF0dHJpYnV0ZSgndmlld0JveCcsY3gudG9GaXhlZCgyKSsnICcrY3kudG9GaXhlZCgyKSsnIDMwMCAxNzAnKTsKICAgIH0KICAgIHJlcXVlc3RBbmltYXRpb25GcmFtZShmb2xsb3cpOwogIH0KICBmb2xsb3coKTsKfSkoKTsKPC9zY3JpcHQ+ | base64 -d > /tmp/camera.html
+          python3 -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); x=Path('/tmp/camera.html').read_text(encoding='utf-8'); p.write_text(s.replace('</body>',x+'</body>',1),encoding='utf-8')"
+      - name: Validate
+        run: python3 -c "from pathlib import Path; s=Path('index.html').read_text(encoding='utf-8'); assert 'requestAnimationFrame(follow)' in s; assert 'viewBox' in s; print('camera smoke test passed')"
+      - name: Commit
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Add reliable dynamic follow camera"
+          git push
