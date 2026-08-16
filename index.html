@@ -416,10 +416,15 @@ input[type="range"]::-moz-range-track{ height:6px; border-radius:999px; backgrou
 .drive-head{ display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 20px; margin-bottom:14px; }
 .drive-label{ font-weight:700; }
 .drive-hint{ font-size:.85rem; color:var(--ink-faint); max-width:46ch; }
-.drive-track{ width:100%; height:auto; display:block; border-radius:var(--radius-md); background:var(--panel-2); border:1px solid var(--line); }
-.track-bg{ fill:var(--panel-2); }
-.track-bounds{ fill:none; stroke:var(--line-strong); stroke-width:1.5; stroke-dasharray:6 6; }
-.track-cone{ fill:var(--amber); opacity:.55; }
+.drive-track{ width:100%; height:auto; display:block; border-radius:var(--radius-md); background:#172719; border:1px solid var(--line); }
+.track-bg{ fill:#172719; }
+.track-bounds,.track-cone{ display:none; }
+.world-road{ fill:none; stroke:#46505a; stroke-width:24; stroke-linecap:round; stroke-linejoin:round; }
+.world-road-edge{ fill:none; stroke:#6a7580; stroke-width:28; stroke-linecap:round; stroke-linejoin:round; opacity:.45; }
+.world-lane{ fill:none; stroke:#d2bd7b; stroke-width:1.4; stroke-dasharray:7 8; }
+.world-water{ fill:#173b4c; stroke:#28566a; stroke-width:1; }
+.world-tree{ fill:#2c5a36; stroke:#173a22; stroke-width:1; }
+.world-building{ fill:#38434c; stroke:#596875; stroke-width:1; }
 .car-shadow{ fill:rgba(0,0,0,.35); }
 .car-grad-1{ stop-color:var(--accent-2); }
 .car-grad-2{ stop-color:var(--accent); }
@@ -839,7 +844,7 @@ footer p + p{ margin-top:8px; }
         <div class="drive-area">
           <div class="drive-head">
             <span class="drive-label">🏁 Rij een rondje</span>
-            <span class="drive-hint">Het autootje hierboven wordt bestuurd met precies dezelfde stuur-, gas- en remstatus als hierboven — probeer het in allebei de standen.</span>
+            <span class="drive-hint">Open wereld zonder hekken: rijd over wegen, gras en langs het water. Bij de rand gaat de wereld naadloos aan de andere kant verder.</span>
           </div>
           <svg class="drive-track" viewBox="0 0 300 170" aria-hidden="true">
             <defs>
@@ -849,11 +854,15 @@ footer p + p{ margin-top:8px; }
               </linearGradient>
             </defs>
             <rect class="track-bg" x="0" y="0" width="300" height="170" rx="18"></rect>
-            <rect class="track-bounds" x="22" y="22" width="256" height="126" rx="14"></rect>
-            <g class="track-cone" transform="translate(40,30)"><polygon points="0,-8 6,8 -6,8"></polygon></g>
-            <g class="track-cone" transform="translate(260,30)"><polygon points="0,-8 6,8 -6,8"></polygon></g>
-            <g class="track-cone" transform="translate(40,140)"><polygon points="0,-8 6,8 -6,8"></polygon></g>
-            <g class="track-cone" transform="translate(260,140)"><polygon points="0,-8 6,8 -6,8"></polygon></g>
+            <path class="world-water" d="M232 7c30 2 62 17 68 39v42c-17-7-37-9-55 0-17 8-34 3-40-10-8-17 4-33 27-38 16-4 13-25 0-33z"></path>
+            <path class="world-road-edge" d="M-18 128C34 101 54 49 105 45s73 48 122 56c31 5 58-2 91-19"></path>
+            <path class="world-road" d="M-18 128C34 101 54 49 105 45s73 48 122 56c31 5 58-2 91-19"></path>
+            <path class="world-lane" d="M-18 128C34 101 54 49 105 45s73 48 122 56c31 5 58-2 91-19"></path>
+            <path class="world-road-edge" d="M145-20c-9 34-3 59 22 79 19 16 24 43 8 67-10 16-11 34-4 62"></path>
+            <path class="world-road" d="M145-20c-9 34-3 59 22 79 19 16 24 43 8 67-10 16-11 34-4 62"></path>
+            <path class="world-lane" d="M145-20c-9 34-3 59 22 79 19 16 24 43 8 67-10 16-11 34-4 62"></path>
+            <circle class="world-tree" cx="26" cy="30" r="8"></circle><circle class="world-tree" cx="70" cy="145" r="8"></circle><circle class="world-tree" cx="270" cy="135" r="9"></circle>
+            <rect class="world-building" x="18" y="65" width="24" height="19" rx="3"></rect><rect class="world-building" x="248" y="18" width="28" height="20" rx="3"></rect>
             <g id="driveCar" transform="translate(150 85) rotate(0)">
               <ellipse class="car-shadow" cx="0" cy="15" rx="19" ry="6"></ellipse>
               <g class="car-wheel" transform="translate(-11,10) rotate(0)"><rect x="-3" y="-5" width="6" height="10" rx="2"></rect></g>
@@ -1622,8 +1631,12 @@ footer p + p{ margin-top:8px; }
 
       // Positie bijwerken en binnen het baantje houden
       var rad = autoHeading * Math.PI / 180;
-      autoX = Math.max(AUTO_RAND, Math.min(TRACK_W - AUTO_RAND, autoX + Math.sin(rad) * autoSnelheid * dt));
-      autoY = Math.max(AUTO_RAND, Math.min(TRACK_H - AUTO_RAND, autoY - Math.cos(rad) * autoSnelheid * dt));
+      autoX += Math.sin(rad) * autoSnelheid * dt;
+      autoY -= Math.cos(rad) * autoSnelheid * dt;
+      if (autoX < -AUTO_RAND) { autoX = TRACK_W + AUTO_RAND; }
+      if (autoX > TRACK_W + AUTO_RAND) { autoX = -AUTO_RAND; }
+      if (autoY < -AUTO_RAND) { autoY = TRACK_H + AUTO_RAND; }
+      if (autoY > TRACK_H + AUTO_RAND) { autoY = -AUTO_RAND; }
 
       driveCar.setAttribute('transform', 'translate(' + autoX.toFixed(1) + ' ' + autoY.toFixed(1) + ') rotate(' + autoHeading.toFixed(1) + ')');
 
