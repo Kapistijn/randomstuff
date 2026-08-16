@@ -1691,5 +1691,24 @@ footer p + p{ margin-top:8px; }
 })();
 
 </script>
-</body>
+<script>
+(function(){
+  const track=document.querySelector('.drive-track');
+  const car=document.getElementById('driveCar');
+  if(!track||!car)return;
+  let cx=0,cy=0,ready=false;
+  function follow(){
+    const t=car.getAttribute('transform')||'';
+    const m=t.match(/translate\(\s*(-?[0-9.]+)[ ,]+(-?[0-9.]+)/);
+    if(m){
+      const x=parseFloat(m[1]),y=parseFloat(m[2]);
+      if(!ready){cx=x-150;cy=y-85;ready=true}
+      cx+=(x-150-cx)*.16;cy+=(y-85-cy)*.16;
+      track.setAttribute('viewBox',cx.toFixed(2)+' '+cy.toFixed(2)+' 300 170');
+    }
+    requestAnimationFrame(follow);
+  }
+  follow();
+})();
+</script></body>
 </html>
