@@ -1,0 +1,63 @@
+name: Dynamic follow camera v2
+on:
+  push:
+    paths:
+      - '.github/workflows/camera-follow-v2.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch camera and open world
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'cameraX' not in s:
+              s=s.replace('var autoVorigeTijd = null;', '''var autoVorigeTijd = null;
+          var CAMERA_W = 300, CAMERA_H = 170, cameraX = AUTO_START_X - 150, cameraY = AUTO_START_Y - 85;
+          var driveTrack = document.querySelector('.drive-track');
+          function updateFollowCamera(){
+            if (!driveTrack) return;
+            cameraX += (autoX - 150 - cameraX) * .14;
+            cameraY += (autoY - 85 - cameraY) * .14;
+            driveTrack.setAttribute('viewBox', cameraX.toFixed(2)+' '+cameraY.toFixed(2)+' '+CAMERA_W+' '+CAMERA_H);
+          }''',1)
+          s=re.sub(r'var TRACK_W = 300, TRACK_H = 170, AUTO_START_X = 150, AUTO_START_Y = 85, AUTO_RAND = 22;', 'var TRACK_W = 900, TRACK_H = 510, AUTO_START_X = 450, AUTO_START_Y = 255, AUTO_RAND = 22;', s, count=1)
+          s=s.replace('autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0;', 'autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0; cameraX = autoX - 150; cameraY = autoY - 85; updateFollowCamera();',1)
+          movement=re.compile(r'autoX = Math\.max\(AUTO_RAND, Math\.min\(TRACK_W - AUTO_RAND, autoX \+ Math\.sin\(rad\) \* autoSnelheid \* dt\)\);\s*autoY = Math\.max\(AUTO_RAND, Math\.min\(TRACK_H - AUTO_RAND, autoY - Math\.cos\(rad\) \* autoSnelheid \* dt\)\);')
+          s,n=movement.subn('''autoX += Math.sin(rad) * autoSnelheid * dt;
+          autoY -= Math.cos(rad) * autoSnelheid * dt;
+          if (autoX < 0) autoX += TRACK_W;
+          if (autoX > TRACK_W) autoX -= TRACK_W;
+          if (autoY < 0) autoY += TRACK_H;
+          if (autoY > TRACK_H) autoY -= TRACK_H;
+          updateFollowCamera();''',s,count=1)
+          if n != 1: raise SystemExit('movement replacement missed')
+          s=s.replace('<rect class="track-bounds"', '<rect style="display:none" class="track-bounds"',1)
+          s=s.replace('Open wereld zonder hekken: rijd over wegen, gras en langs het water. Bij de rand gaat de wereld naadloos aan de andere kant verder.', 'Dynamische volgcamera: de auto blijft centraal in beeld terwijl de open wereld mee schuift.',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: UI and script smoke test
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          s=Path('index.html').read_text(encoding='utf-8')
+          for marker in ['updateFollowCamera','cameraX','viewBox','requestAnimationFrame(autoFrame)']:
+              if marker not in s: raise SystemExit('missing '+marker)
+          class Check(HTMLParser): pass
+          Check().feed(s)
+          print('HTML parsed and camera markers found')
+          PY
+      - name: Commit and push
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Add camera follow and UI smoke test"
+          git push
