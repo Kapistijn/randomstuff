@@ -1,0 +1,76 @@
+name: Dynamic follow camera v3
+on:
+  push:
+    paths:
+      - '.github/workflows/camera-follow-v3.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch dynamic camera and open-world movement
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+
+          if 'function updateFollowCamera' not in s:
+              needle='  var autoVorigeTijd = null;'
+              if needle not in s: raise SystemExit('camera insertion point not found')
+              inject='''  var autoVorigeTijd = null;
+          var CAMERA_W = 300, CAMERA_H = 170;
+          var cameraX = AUTO_START_X - CAMERA_W / 2, cameraY = AUTO_START_Y - CAMERA_H / 2;
+          var driveTrack = document.querySelector('.drive-track');
+          function updateFollowCamera(){
+            if (!driveTrack) return;
+            cameraX += (autoX - CAMERA_W / 2 - cameraX) * 0.14;
+            cameraY += (autoY - CAMERA_H / 2 - cameraY) * 0.14;
+            driveTrack.setAttribute('viewBox', cameraX.toFixed(2)+' '+cameraY.toFixed(2)+' '+CAMERA_W+' '+CAMERA_H);
+          }'''
+              s=s.replace(needle,inject,1)
+
+          s=s.replace('var TRACK_W = 300, TRACK_H = 170, AUTO_START_X = 150, AUTO_START_Y = 85, AUTO_RAND = 22;', 'var TRACK_W = 900, TRACK_H = 510, AUTO_START_X = 450, AUTO_START_Y = 255, AUTO_RAND = 22;', 1)
+
+          s=re.sub(r'autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0;', 'autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0; cameraX = autoX - CAMERA_W / 2; cameraY = autoY - CAMERA_H / 2; updateFollowCamera();', s, count=1)
+
+          pattern=r'      // Positie bijwerken.*?\n      driveCar\.setAttribute\('
+          replacement='''      // Open world movement: no fences, with a smooth follow camera.
+      var rad = autoHeading * Math.PI / 180;
+      autoX += Math.sin(rad) * autoSnelheid * dt;
+      autoY -= Math.cos(rad) * autoSnelheid * dt;
+      if (autoX < 0) autoX += TRACK_W;
+      if (autoX > TRACK_W) autoX -= TRACK_W;
+      if (autoY < 0) autoY += TRACK_H;
+      if (autoY > TRACK_H) autoY -= TRACK_H;
+      updateFollowCamera();
+
+      driveCar.setAttribute('''
+          s,n=re.subn(pattern,replacement,s,count=1,flags=re.S)
+          if n != 1: raise SystemExit('movement replacement missed again')
+          s=s.replace('Open wereld zonder hekken: rijd over wegen, gras en langs het water. Bij de rand gaat de wereld naadloos aan de andere kant verder.', 'Dynamische camera: de wereld schuift mee en de auto blijft netjes in beeld.', 1)
+          p.write_text(s,encoding='utf-8')
+          print('patched index.html successfully')
+          PY
+      - name: Run HTML smoke test
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          s=Path('index.html').read_text(encoding='utf-8')
+          for marker in ['function updateFollowCamera','cameraX','setAttribute(\'viewBox\'', 'Open world movement']:
+              if marker not in s: raise SystemExit('missing marker: '+marker)
+          class Check(HTMLParser): pass
+          Check().feed(s)
+          print('HTML smoke test passed')
+          PY
+      - name: Commit patched index
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Fix movement replacement and follow camera"
+          git push
