@@ -1,0 +1,25 @@
+name: Realistic Force Feedback
+on:
+  push:
+    paths:
+      - '.github/workflows/ffb-realism.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add realistic feedback layer
+        run: |
+          echo PHNjcmlwdD4KKGZ1bmN0aW9uKCl7CiAgY29uc3Qgc2xpZGVyPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdkZW1vV2hlZWxTbGlkZXInKTsKICBjb25zdCByb3Rvcj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZGVtb1doZWVsUm90b3InKTsKICBjb25zdCBidXR0b249ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ZmYkJ0bicpOwogIGNvbnN0IGNhcHRpb249ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ZmYkNhcHRpb24nKTsKICBjb25zdCBjYXI9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2RyaXZlQ2FyJyk7CiAgaWYoIXNsaWRlcnx8IXJvdG9yfHwhYnV0dG9ufHwhY2FyKXJldHVybjsKICBsZXQgYWN0aXZlPWZhbHNlLGhlbGQ9ZmFsc2UsbGFzdEFuZ2xlPTAscmVsZWFzZVRpbWVyPTA7CiAgZnVuY3Rpb24gYW5nbGUoKXtyZXR1cm4gTnVtYmVyKHNsaWRlci52YWx1ZSl8fDB9CiAgZnVuY3Rpb24gc3VyZmFjZSgpewogICAgY29uc3QgdD1jYXIuZ2V0QXR0cmlidXRlKCd0cmFuc2Zvcm0nKXx8Jyc7CiAgICBjb25zdCBtPXQubWF0Y2goL3RyYW5zbGF0ZVwoXHMqKC0/WzAtOS5dKylbICxdKygtP1swLTkuXSspLyk7CiAgICBpZighbSlyZXR1cm4gJ3JvYWQnOwogICAgY29uc3QgeD1OdW1iZXIobVsxXSkseT1OdW1iZXIobVsyXSk7CiAgICByZXR1cm4gKHg8NjJ8fHg+MjM4fHx5PDI4fHx5PjE0Mik/J2dyYXNzJzoncm9hZCc7CiAgfQogIGZ1bmN0aW9uIHJlbmRlcigpewogICAgY29uc3QgYmFzZT1hbmdsZSgpOwogICAgbGV0IHdvYmJsZT0wOwogICAgaWYoYWN0aXZlJiZzdXJmYWNlKCk9PT0nZ3Jhc3MnJiZNYXRoLmFicyhiYXNlKT44KXsKICAgICAgd29iYmxlPU1hdGguc2luKHBlcmZvcm1hbmNlLm5vdygpLzQzKSpNYXRoLm1pbigxMixNYXRoLmFicyhiYXNlKS8yNCk7CiAgICB9CiAgICByb3Rvci5zZXRBdHRyaWJ1dGUoJ3RyYW5zZm9ybScsJ3JvdGF0ZSgnKyhiYXNlK3dvYmJsZSkrJyAxMDAgMTAwKScpOwogICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKHJlbmRlcik7CiAgfQogIGZ1bmN0aW9uIGNlbnRlcigpewogICAgaWYoIWFjdGl2ZXx8aGVsZClyZXR1cm47CiAgICBjbGVhclRpbWVvdXQocmVsZWFzZVRpbWVyKTsKICAgIHJlbGVhc2VUaW1lcj1zZXRUaW1lb3V0KCgpPT57CiAgICAgIHNsaWRlci52YWx1ZT0nMCc7CiAgICAgIHNsaWRlci5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgnaW5wdXQnLHtidWJibGVzOnRydWV9KSk7CiAgICAgIGxhc3RBbmdsZT0wOwogICAgfSw4MCk7CiAgfQogIFsncG9pbnRlcmRvd24nLCdtb3VzZWRvd24nLCd0b3VjaHN0YXJ0JywnZm9jdXMnXS5mb3JFYWNoKGU9PnNsaWRlci5hZGRFdmVudExpc3RlbmVyKGUsKCk9PntoZWxkPXRydWV9KSk7CiAgWydwb2ludGVydXAnLCdtb3VzZXVwJywndG91Y2hlbmQnLCdibHVyJywnY2hhbmdlJ10uZm9yRWFjaChlPT5zbGlkZXIuYWRkRXZlbnRMaXN0ZW5lcihlLCgpPT57aGVsZD1mYWxzZTtjZW50ZXIoKX0pKTsKICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdwb2ludGVyZG93bicsZT0+e2lmKGUudGFyZ2V0IT09c2xpZGVyJiYhc2xpZGVyLmNvbnRhaW5zKGUudGFyZ2V0KSl7aGVsZD1mYWxzZTtjZW50ZXIoKX19KTsKICBidXR0b24uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLGU9PnsKICAgIGUucHJldmVudERlZmF1bHQoKTsKICAgIGFjdGl2ZT0hYWN0aXZlOwogICAgYnV0dG9uLnRleHRDb250ZW50PWFjdGl2ZT8n8J+SqiBGb3JjZSBGZWVkYmFjayB1aXRzY2FrZWxlbic6J/CfkooIEZvcmNlIEZlZWRiYWNrIHByb2JlcmVuJzsKICAgIGJ1dHRvbi5zZXRBdHRyaWJ1dGUoJ2FyaWEtcHJlc3NlZCcsU3RyaW5nKGFjdGl2ZSkpOwogICAgY2FwdGlvbi50ZXh0Q29udGVudD1hY3RpdmU/J0FjdGllZjogb3AgZ3JhcyB0cmlsdCBoZXQgc3R1dXIgaGVlbiBlbiB3ZWVyLiBPcCBhc2ZhbHQgYmxpamZ0IGhldCBydXN0aWcgZW4gY2VudHJlZXJ0IGhldCBiaWogbG9zbGF0ZW4uJzonVWl0OiBoZXQgc3R1dXIgdm9sZ3QgYWxsZWVuIGRlIHNsaWRlci4nOwogICAgaWYoYWN0aXZlKWNlbnRlcigpOwogIH0pOwogIHNsaWRlci5hZGRFdmVudExpc3RlbmVyKCdpbnB1dCcsKCk9PntsYXN0QW5nbGU9YW5nbGUoKX0pOwogIHJlbmRlcigpOwp9KSgpOwo8L3NjcmlwdD4= | base64 -d > /tmp/ffb.html
+          python3 -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); x=Path('/tmp/ffb.html').read_text(encoding='utf-8'); p.write_text(s.replace('</body>',x+'</body>',1),encoding='utf-8')"
+      - name: Smoke test
+        run: python3 -c "from pathlib import Path; s=Path('index.html').read_text(encoding='utf-8'); assert 'surface' in s and 'requestAnimationFrame(render)' in s and 'aria-pressed' in s; print('FFB smoke test passed')"
+      - name: Commit
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Make Force Feedback surface-aware and self-centering"
+          git push
