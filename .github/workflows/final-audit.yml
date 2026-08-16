@@ -1,0 +1,46 @@
+name: Final interaction audit
+on:
+  push:
+    paths:
+      - '.github/workflows/final-audit.yml'
+permissions:
+  contents: write
+jobs:
+  audit-and-polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Polish graphics and interaction states
+        run: |
+          python3 -c "import base64;from pathlib import Path;p=Path('index.html');s=p.read_text(encoding='utf-8');css=base64.b64decode('LkZmYkJ0blthcmlhLXByZXNzZWQ9XCJ0cnVlXCJde2JhY2tncm91bmQ6dmFyKC1nb29kKTtib3gtc2hhZG93OjAgMCAwIDJweCB2YXIoLWdvb2QpfQouZmZiLWJ0bnt0cmFuc2l0aW9uOnRyYW5zZm9ybSAuMTVzIGVhc2Utb3V0LGZpbHRlciAuMTVzIGVhc2Utb3V0fS5mZmItYnRuOmhvdmVyIHt0cmFuc2Zvcm06dHJhbnNsYXRlWVwtMXB4O2ZpbHRlcjpiaWdodG5lc3MoMS4wNCl9LmZmbi1jYXB0aW9ue3RyYW5zaXRpb246b3BhY2l0eSAuMjVzIGVhc2Utb3V0fS5kZW1vLXdoZWVsLWFyZWEgeWlsbCwgLmV4YW1wbGUtY2FyIHt0cmFuc2l0aW9uOnRyYW5zZm9ybSAuMjVzIGN1YmljLWJlemllcigwLjE2LDEsMC4zLDEpLG9wYWNpdHkgLjI1c30uZXhhbXBsZS1jYXJkOmhvdmVyIHt0cmFuc2Zvcm06dHJhbnNsYXRlWVwtMnB4fQ==').decode();s=s.replace('</style>',css+'</style>',1);s=s.replace('Uut: het stuur volgt alleen de slider.','Uit: het stuur volgt alleen de slider.');p.write_text(s,encoding='utf-8')"
+      - name: JavaScript and HTML smoke tests
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re, subprocess, tempfile
+          s=Path('index.html').read_text(encoding='utf-8')
+          class Check(HTMLParser):
+              def __init__(self): super().__init__(); self.ids=[]; self.scripts=[]
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if 'id' in a: self.ids.append(a['id'])
+              def handle_data(self,data): pass
+          Check().feed(s)
+          needed=['demoWheelSlider','demoWheelRotor','ffbBtn','ffbCaption','driveCar','driveTrack']
+          missing=[x for x in needed if ('id="'+x+'"') not in s]
+          if missing: raise SystemExit('Missing UI targets: '+','.join(missing))
+          if len(re.findall(r'id="driveCar"',s)) != 1: raise SystemExit('driveCar id is not unique')
+          scripts=re.findall(r'<script[^>]*>(.*?)</script>',s,re.S)
+          with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False) as f:
+              f.write('\n'.join(scripts)); name=f.name
+          subprocess.run(['node','--check',name],check=True)
+          print('HTML and JavaScript smoke tests passed')
+          PY
+      - name: Commit audited page
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Audit interactions and polish graphics"
+          git push
