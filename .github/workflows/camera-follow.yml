@@ -1,0 +1,61 @@
+name: Dynamic follow camera
+on:
+  push:
+    paths:
+      - '.github/workflows/camera-follow.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add camera follow and polish the driving demo
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+
+          marker='''            <g id="driveCar" transform="translate(150 85) rotate(0)">'''
+          if marker not in s:
+              raise SystemExit('drive car marker not found')
+          if 'id="worldMap"' not in s:
+              s=s.replace('''            <rect class="track-bg" x="0" y="0" width="300" height="170" rx="18"></rect>''','''            <g id="worldMap">\n            <rect class="track-bg" x="0" y="0" width="300" height="170" rx="18"></rect>''',1)
+              s=s.replace(marker,'''            </g>\n''' + marker,1)
+
+          s=s.replace('''var TRACK_W = 300, TRACK_H = 170, AUTO_START_X = 150, AUTO_START_Y = 85, AUTO_RAND = 22;''','''var TRACK_W = 900, TRACK_H = 510, AUTO_START_X = 450, AUTO_START_Y = 255, AUTO_RAND = 22;\n  var CAMERA_W = 300, CAMERA_H = 170, cameraX = AUTO_START_X - CAMERA_W / 2, cameraY = AUTO_START_Y - CAMERA_H / 2;\n  var driveTrack = document.querySelector('.drive-track'), worldMap = document.getElementById('worldMap');''',1)
+
+          s=s.replace('''var autoX = AUTO_START_X, autoY = AUTO_START_Y, autoHeading = 0, autoSnelheid = 0;\n  var autoVorigeTijd = null;''','''var autoX = AUTO_START_X, autoY = AUTO_START_Y, autoHeading = 0, autoSnelheid = 0;\n  var autoVorigeTijd = null;\n\n  // Maak een betegelde wereld. Daardoor blijft er rondom de auto altijd land,\n  // weg en water zichtbaar terwijl de viewBox als een echte volgcamera meebeweegt.\n  function prepareWorld() {\n    if (!driveTrack || !worldMap || worldMap.dataset.tiled) return;\n    worldMap.dataset.tiled = 'true';\n    for (var tx = 0; tx < 3; tx++) {\n      for (var ty = 0; ty < 3; ty++) {\n        if (tx === 0 && ty === 0) continue;\n        var tile = worldMap.cloneNode(true);\n        tile.removeAttribute('id');\n        tile.setAttribute('transform', 'translate(' + (tx * 300) + ' ' + (ty * 170) + ')');\n        driveTrack.insertBefore(tile, driveCar);\n      }\n    }\n  }\n\n  function updateFollowCamera() {\n    if (!driveTrack) return;\n    cameraX += (autoX - CAMERA_W / 2 - cameraX) * 0.14;\n    cameraY += (autoY - CAMERA_H / 2 - cameraY) * 0.14;\n    driveTrack.setAttribute('viewBox', cameraX.toFixed(2) + ' ' + cameraY.toFixed(2) + ' ' + CAMERA_W + ' ' + CAMERA_H);\n  }''',1)
+
+          s=s.replace('''autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0;''','''autoX = AUTO_START_X; autoY = AUTO_START_Y; autoHeading = 0; autoSnelheid = 0; cameraX = AUTO_START_X - CAMERA_W / 2; cameraY = AUTO_START_Y - CAMERA_H / 2; prepareWorld(); updateFollowCamera();''',1)
+
+          old='''      // Positie bijwerken en binnen het baantje houden\n      var rad = autoHeading * Math.PI / 180;\n      autoX = Math.max(AUTO_RAND, Math.min(TRACK_W - AUTO_RAND, autoX + Math.sin(rad) * autoSnelheid * dt));\n      autoY = Math.max(AUTO_RAND, Math.min(TRACK_H - AUTO_RAND, autoY - Math.cos(rad) * autoSnelheid * dt));'''
+          new='''      // Positie bijwerken zonder hekken. De camera volgt de auto dynamisch.\n      var rad = autoHeading * Math.PI / 180;\n      autoX += Math.sin(rad) * autoSnelheid * dt;\n      autoY -= Math.cos(rad) * autoSnelheid * dt;\n      if (autoX < 0) autoX += TRACK_W;\n      if (autoX > TRACK_W) autoX -= TRACK_W;\n      if (autoY < 0) autoY += TRACK_H;\n      if (autoY > TRACK_H) autoY -= TRACK_H;\n      updateFollowCamera();'''
+          if old not in s:
+              raise SystemExit('old movement block not found')
+          s=s.replace(old,new,1)
+
+          s=s.replace('''Het autootje hierboven wordt bestuurd met precies dezelfde stuur-, gas- en remstatus als hierboven — probeer het in allebei de standen.''','''De camera volgt de auto dynamisch. Als hij naar de rand rijdt, schuift de wereld mee en blijf je altijd in beeld.''',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Validate HTML and JavaScript markers
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          s=Path('index.html').read_text(encoding='utf-8')
+          required=['id="worldMap"','viewBox','updateFollowCamera','prepareWorld','requestAnimationFrame(autoFrame)']
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('Missing markers: '+', '.join(missing))
+          class P(HTMLParser): pass
+          P().feed(s)
+          print('HTML smoke test passed:', len(s), 'bytes')
+          PY
+      - name: Commit patched page
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Add dynamic follow camera and polish UI"
+          git push
