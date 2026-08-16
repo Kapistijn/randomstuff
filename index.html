@@ -621,6 +621,15 @@ footer p + p{ margin-top:8px; }
 .demo-wheel-area:after{content:"FFB READY";display:block;font:700 .68rem var(--mono);letter-spacing:.12em;color:var(--ink-faint);opacity:.65;margin-top:2px}
 .example-card,.beamng-card{transition:transform .22s cubic-bezier(.16,1,.3,1),border-color .22s,background .22s}
 .example-card:hover,.beamng-card:hover{transform:translateY(-3px);border-color:var(--accent);background:var(--panel-2)}
+
+/* Final polish: clearer states, cleaner motion, compact dashboard feel */
+.ffb-btn[aria-pressed="true"]{background:var(--good);box-shadow:0 0 0 3px rgba(95,208,166,.18)}
+.ffb-btn{transition:transform .16s ease-out,filter .16s ease-out,background .18s ease-out,box-shadow .18s ease-out}
+.ffb-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.ffb-caption{min-height:1.5em;transition:opacity .2s ease-out;color:var(--ink-dim)}
+.demo-wheel-area:after{content:"FFB READY";display:block;font:700 .68rem var(--mono);letter-spacing:.12em;color:var(--ink-faint);opacity:.65;margin-top:2px}
+.example-card,.beamng-card{transition:transform .22s cubic-bezier(.16,1,.3,1),border-color .22s,background .22s}
+.example-card:hover,.beamng-card:hover{transform:translateY(-3px);border-color:var(--accent);background:var(--panel-2)}
 </style>
 </head>
 <body>
