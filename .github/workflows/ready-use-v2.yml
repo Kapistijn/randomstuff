@@ -1,0 +1,45 @@
+name: Ready-use audit v2
+on:
+  push:
+    paths:
+      - '.github/workflows/ready-use-v2.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply final UI polish
+        run: |
+          python3 -c "import base64;from pathlib import Path;p=Path('index.html');s=p.read_text(encoding='utf-8');css=base64.b64decode('Ci8qIEZpbmFsIHBvbGlzaDogY2xlYXJlciBzdGF0ZXMsIGNsZWFuZXIgbW90aW9uLCBjb21wYWN0IGRhc2hib2FyZCBmZWVsICovCi5mZmItYnRuW2FyaWEtcHJlc3NlZD0idHJ1ZSJde2JhY2tncm91bmQ6dmFyKC0tZ29vZCk7Ym94LXNoYWRvdzowIDAgMCAzcHggcmdiYSg5NSwyMDgsMTY2LC4xOCl9Ci5mZmItYnRue3RyYW5zaXRpb246dHJhbnNmb3JtIC4xNnMgZWFzZS1vdXQsZmlsdGVyIC4xNnMgZWFzZS1vdXQsYmFja2dyb3VuZCAuMThzIGVhc2Utb3V0LGJveC1zaGFkb3cgLjE4cyBlYXNlLW91dH0KLmZmYi1idG46aG92ZXJ7dHJhbnNmb3JtOnRyYW5zbGF0ZVkoLTJweCk7ZmlsdGVyOmJyaWdodG5lc3MoMS4wNSl9Ci5mZmItY2FwdGlvbnttaW4taGVpZ2h0OjEuNWVtO3RyYW5zaXRpb246b3BhY2l0eSAuMnMgZWFzZS1vdXQ7Y29sb3I6dmFyKC0taW5rLWRpbSl9Ci5kZW1vLXdoZWVsLWFyZWE6YWZ0ZXJ7Y29udGVudDoiRkZCIFJFQURZIjtkaXNwbGF5OmJsb2NrO2ZvbnQ6NzAwIC42OHJlbSB2YXIoLS1tb25vKTtsZXR0ZXItc3BhY2luZzouMTJlbTtjb2xvcjp2YXIoLS1pbmstZmFpbnQpO29wYWNpdHk6LjY1O21hcmdpbi10b3A6MnB4fQouZXhhbXBsZS1jYXJkLC5iZWFtbmctY2FyZHt0cmFuc2l0aW9uOnRyYW5zZm9ybSAuMjJzIGN1YmljLWJlemllciguMTYsMSwuMywxKSxib3JkZXItY29sb3IgLjIycyxiYWNrZ3JvdW5kIC4yMnN9Ci5leGFtcGxlLWNhcmQ6aG92ZXIsLmJlYW1uZy1jYXJkOmhvdmVye3RyYW5zZm9ybTp0cmFuc2xhdGVZKC0zcHgpO2JvcmRlci1jb2xvcjp2YXIoLS1hY2NlbnQpO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMil9Cg==').decode();p.write_text(s.replace('</style>',css+'</style>',1).replace('Uut: het stuur volgt alleen de slider.','Uit: het stuur volgt alleen de slider.'),encoding='utf-8')"
+      - name: Audit HTML and JavaScript
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re, subprocess, tempfile
+          s=Path('index.html').read_text(encoding='utf-8')
+          class C(HTMLParser):
+            def __init__(self): super().__init__(); self.ids=[]
+            def handle_starttag(self,tag,attrs):
+              d=dict(attrs)
+              if 'id' in d:self.ids.append(d['id'])
+          c=C();c.feed(s)
+          dup=sorted({x for x in c.ids if c.ids.count(x)>1})
+          if dup: raise SystemExit('duplicate ids: '+','.join(dup))
+          scripts=re.findall(r'<script[^>]*>(.*?)</script>',s,re.S)
+          with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False) as f:
+            f.write('\n'.join(scripts));name=f.name
+          subprocess.run(['node','--check',name],check=True)
+          for marker in ['demoWheelSlider','demoWheelRotor','ffbBtn','driveCar','requestAnimationFrame(render)','surface()']:
+            if marker not in s:raise SystemExit('missing '+marker)
+          print('READY USE CHECK PASSED')
+          PY
+      - name: Commit polished page
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Polish final UI and animations"
+          git push
