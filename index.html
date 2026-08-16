@@ -611,7 +611,7 @@ footer{ padding:48px 0 80px; text-align:center; color:var(--ink-faint); font-siz
 footer .wrap{ border-top:1px solid var(--line); padding-top:28px; }
 footer p + p{ margin-top:8px; }
 
-</style>
+ .ffb-btn[aria-pressed="true"]{background:var(--good);box-shadow:0 0 0 3px rgba(95,208,166,.18)} .ffb-caption{transition:opacity .2s} </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Ga direct naar de inhoud</a>
@@ -1750,13 +1750,13 @@ footer p + p{ margin-top:8px; }
   document.addEventListener('pointerdown',e=>{if(e.target!==slider&&!slider.contains(e.target)){held=false;center()}});
   button.addEventListener('click',e=>{
     e.preventDefault();
-    active=!ctive;
-    button.textContent=active?'true':'false';
+    active=!active;
+    button.textContent=active?'💪 Force Feedback uitschakelen':'💪 Force Feedback proberen';
     button.setAttribute('aria-pressed',String(active));
     caption.textContent=active?'Actief: op gras trilt het stuur heen en weer. Op asfalt blijft het rustig en centreert het bij loslaten.':'Uut: het stuur volgt alleen de slider.';
     if(active)center();
   });
-  slider.addEventListener('input',(response)=>{});
+  slider.addEventListener('input',()=>{lastAngle=angle()});
   render();
 })();
 </script></body>
