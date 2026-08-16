@@ -1,0 +1,33 @@
+name: Final UI polish
+on:
+  push:
+    paths:
+      - '.github/workflows/final-polish.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix FFB and polish controls
+        run: |
+          python3 -c "from pathlib import Path;p=Path('index.html');s=p.read_text(encoding='utf-8');s=s.replace('active=!ctive;','active=!active;').replace(\"button.textContent=active?'true':'false';\",\"button.textContent=active?'💪 Force Feedback uitschakelen':'💪 Force Feedback proberen';\").replace(\"slider.addEventListener('input',(response)=>{});\",\"slider.addEventListener('input',()=>{lastAngle=angle()});\");s=s.replace('</style>',' .ffb-btn[aria-pressed=\\\"true\\\"]{background:var(--good);box-shadow:0 0 0 3px rgba(95,208,166,.18)} .ffb-caption{transition:opacity .2s} </style>',1);p.write_text(s,encoding='utf-8')"
+      - name: Validate final controls
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf-8')
+          required=['active=!active;','Force Feedback uitschakelen','surface()','requestAnimationFrame(render)']
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('missing: '+', '.join(missing))
+          if 'active=!ctive' in s: raise SystemExit('broken toggle remains')
+          print('Final FFB and UI smoke test passed')
+          PY
+      - name: Commit final polish
+        run: |
+          git config user.name "ClickUp Brain"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Fix FFB toggle and polish UI states"
+          git push
